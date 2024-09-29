@@ -1,0 +1,234 @@
+#include "modbus.h"
+#include "gpio.h"
+#include "key.h"
+#include "delay.h"
+#include "sys.h"
+
+
+u16 Reg[] ={0x0001,
+            0x0012,
+            0x0013,
+            0x0004,
+			0x0025,
+            0x0036,
+            0x0007,
+			0X0008,
+           };//reg是提前定义好的寄存器和寄存器数据，要读取和改写的部分内容
+
+
+
+/***定义一个结构体：（设备作为主机或从机时均会用到）***/
+
+typedef struct
+{
+    //作为从机时使用
+    uint8_t  myadd;        //本设备从机地址
+    u8  rcbuf[100];   //modbus接受缓冲区
+    u8  timout;       //modbus数据持续时间
+    u8  recount;      //modbus端口接收到的数据个数
+    u8  timrun;       //modbus定时器是否计时标志
+    u8  reflag;       //modbus一帧数据接受完成标志位
+    u8  sendbuf[100]; //modbus接发送缓冲区
+
+    //作为主机添加部分
+    u8 Host_Txbuf[8];	//modbus发送数组
+    uint8_t slave_add;		//要匹配的从机设备地址（做主机实验时使用）
+    u8 Host_send_flag;//主机设备发送数据完毕标志位
+    int Host_Sendtime;//发送完一帧数据后时间计数
+    u8 Host_time_flag;//发送时间到标志位，=1表示到发送数据时间了
+    u8 Host_End;//接收数据后处理完毕
+} MODBUS;
+
+MODBUS modbus;//结构体变量
+
+
+//参数1从机地址，参数2起始地址，参数3寄存器个数
+void Host_Read03_slave(uint8_t slave,uint16_t StartAddr,uint16_t num)
+{
+    int j;
+    uint16_t crc;//计算的CRC校验位
+    modbus.slave_add=slave;//这是先把从机地址存储下来，后面接收数据处理时会用到
+    modbus.Host_Txbuf[0]=slave;//这是要匹配的从机地址
+    modbus.Host_Txbuf[1]=0x03;//功能码
+    modbus.Host_Txbuf[2]=StartAddr/256;//起始地址高位
+    modbus.Host_Txbuf[3]=StartAddr%256;//起始地址低位
+    modbus.Host_Txbuf[4]=num/256;//寄存器个数高位
+    modbus.Host_Txbuf[5]=num%256;//寄存器个数低位
+    crc=Modbus_CRC16(&modbus.Host_Txbuf[0],6); //获取CRC校验位
+    modbus.Host_Txbuf[6]=crc/256;//寄存器个数高位
+    modbus.Host_Txbuf[7]=crc%256;//寄存器个数低位
+    //发送数据包装完毕(共8个字节)
+    //开始发送数据
+    RS485_TX_ENABLE;//使能485控制端(启动发送)
+    for(j=0; j<i; j++)
+    {
+        Modbus_Send_Byte(modbus.sendbuf[j]);
+    }
+    RS485_RX_ENABLE;//失能485控制端（改为接收）
+}
+
+/***我们通过前面对从机返回数据的格式进行分析可知，
+数据中的第三个字节（对应modbus.rcbuf[2]位）是返回数据的有效个数，
+从第四个字节开始是数据的有效内容，一个寄存器数据分为高位和低位，
+所有两个字节是一个完整的数据，然后将其进行计算即可。***/
+
+
+//主机接收从机的消息进行处理功能码0x03
+void HOST_ModbusRX()
+{
+    u16 crc,rccrc;//计算crc和接收到的crc
+
+    if(modbus.reflag == 0)  //如果接收未完成则返回空
+    {
+        return;
+    }
+    //接收数据结束
+
+    //（数组中除了最后两位CRC校验位其余全算）
+    crc = Modbus_CRC16(&modbus.rcbuf[0],modbus.recount-2); //获取CRC校验位
+    rccrc = modbus.rcbuf[modbus.recount-2]*256+modbus.rcbuf[modbus.recount-1];//计算读取的CRC校验位
+
+    if(crc == rccrc) //CRC检验成功 开始分析包
+    {
+        if(modbus.rcbuf[0] == modbus.slave_add)  // 检查地址是是对应从机发过来的
+        {
+            if(modbus.rcbuf[1]==3)//功能码时03
+                Host_Func3();//这是读取寄存器的有效数据位进行计算
+        }
+
+    }
+    modbus.recount = 0;//接收计数清零
+    modbus.reflag = 0; //接收标志清零
+
+}
+
+void Host_Func3()
+{
+    int i;
+    int count=(int)modbus.rcbuf[2];//这是数据个数
+
+    printf("从机返回 %d 个寄存器数据：\r\n",count/2);
+    for(i=0; i<count; i=i+2)
+    {
+        printf("Temp_Hbit= %d Temp_Lbit= %d temp= %d\r\n",(int)modbus.rcbuf[3+i],(int)modbus.rcbuf[4+i],(int)modbus.rcbuf[4+i]+((int)modbus.rcbuf[3+i])*256);
+    }
+}
+
+ //向一个寄存器中写数据的参数设置
+ void Host_write06_slave(uint8_t slave,uint8_t fun,uint16_t StartAddr,uint16_t num)
+ {
+ 	uint16_t crc,j;//计算的CRC校验位
+ 	modbus.slave_add=slave;//从机地址赋值一下，后期有用
+ 	modbus.Host_Txbuf[0]=slave;//这是要匹配的从机地址
+ 	modbus.Host_Txbuf[1]=fun;//功能码
+ 	modbus.Host_Txbuf[2]=StartAddr/256;//起始地址高位
+ 	modbus.Host_Txbuf[3]=StartAddr%256;//起始地址低位
+ 	modbus.Host_Txbuf[4]=num/256;
+ 	modbus.Host_Txbuf[5]=num%256;
+ 	crc=Modbus_CRC16(&modbus.Host_Txbuf[0],6); //获取CRC校验位
+ 	modbus.Host_Txbuf[6]=crc/256;//寄存器个数高位
+ 	modbus.Host_Txbuf[7]=crc%256;//寄存器个数低位
+ 	//发送数据包装完毕
+ 	//开始发送数据
+ 	RS485_TX_ENABLE;//使能485控制端(启动发送)  
+ 	for(j=0;j<i;j++)
+ 	{
+ 	 Modbus_Send_Byte(modbus.sendbuf[j]);
+ 	}
+ 	RS485_RX_ENABLE;//失能485控制端（改为接收）
+ }
+ 
+ 
+/***从机地址+功能码+起始地址+成功写入的寄存器个数+CRC
+只是辅助一下从机已经根据指令往对应的寄存器中写入了数据***/
+ 
+  //从机返回数据
+ void Host_Func6()
+ {
+ 	int crc,rccrc;
+ 	crc = Modbus_CRC16(&modbus.rcbuf[0],6); //获取CRC校验位
+ 	rccrc = modbus.rcbuf[6]*256+modbus.rcbuf[7];//计算读取的CRC校验位
+ 	if(crc == rccrc) //CRC检验成功 开始分析包
+ 	{	
+ 	   if(modbus.rcbuf[0] == modbus.slave_add)  // 检查地址是是对应从机发过来的
+ 		 {
+ 			 if(modbus.rcbuf[1]==6)//功能码时06
+ 			 {
+ 		
+ 						printf("地址为 %d 的从机寄存器 %d 中写入数据 %d \r\n ",(int)modbus.rcbuf[0],(int)modbus.rcbuf[3]+((int)modbus.rcbuf[2])*256,(int)modbus.rcbuf[5]+((int)modbus.rcbuf[4])*256);
+ 						printf("Host_06 write data right!\r\n");
+ 				
+ 			 }
+ 		 }
+ 		 
+ 	}	
+ }
+
+ 
+  // Modbus初始化函数
+ void Modbus_Init()
+ {
+   modbus.myadd = 0x02; //从机设备地址为2
+   modbus.timrun = 0;    //modbus定时器停止计算
+ 	modbus.slave_add=0x01;//主机要匹配的从机地址（本设备作为主机时）
+ }
+ 
+  // Modbus事件处理函数
+ void Modbus_Event()
+ {
+ 	u16 crc,rccrc;//crc和接收到的crc
+ 	//没有收到数据包
+   if(modbus.reflag == 0)  //如果接收未完成则返回空
+ 	{
+ 	   return;
+ 	}
+ 	//收到数据包(接收完成)
+ 	//通过读到的数据帧计算CRC
+ 	//参数1是数组首地址，参数2是要计算的长度（除了CRC校验位其余全算）
+ 	crc = Modbus_CRC16(&modbus.rcbuf[0],modbus.recount-2); //获取CRC校验位
+ 	// 读取数据帧的CRC
+ 	rccrc = modbus.rcbuf[modbus.recount-2]*256+modbus.rcbuf[modbus.recount-1];//计算读取的CRC校验位
+ 	//等价于下面这条语句
+ 	//rccrc=modbus.rcbuf[modbus.recount-1]|(((u16)modbus.rcbuf[modbus.recount-2])<<8);//获取接收到的CRC
+ 	if(crc == rccrc) //CRC检验成功 开始分析包
+ 	{	
+ 	   if(modbus.rcbuf[0] == modbus.myadd)  // 检查地址是否时自己的地址
+ 		 {
+ 		   switch(modbus.rcbuf[1])   //分析modbus功能码
+ 			 {
+ 			   case 0:             break;
+ 				 case 1:             break;
+ 				 case 2:             break;
+ 				 case 3:      Modbus_Func3();      break;//这是读取寄存器的数据
+ 				 case 4:             break;
+ 				 case 5:             break;
+          case 6:      Modbus_Func6();      break;//这是写入单个寄存器数据
+ 				 case 7:             break;
+ 				 case 8:             break;
+ 				 case 9:             break;
+ 				 case 16:     Modbus_Func16(); 			break;//写入多个寄存器数据
+ 			 }
+ 		 }
+ 		 else if(modbus.rcbuf[0] == 0) //广播地址不予回应
+ 		 {
+ 		    
+ 		 }	 
+ 	}	
+ 	 modbus.recount = 0;//接收计数清零
+    modbus.reflag = 0; //接收标志清零
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
