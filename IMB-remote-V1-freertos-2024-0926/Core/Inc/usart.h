@@ -42,6 +42,12 @@ void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
+
+void Usart_SendByte(uint8_t str);
+void Usart_SendString(uint8_t *str);
+
+void u1_SendArray(uint8_t *Array, uint16_t Length);
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

@@ -1,7 +1,7 @@
 imb-remote-v1-freertos-2024-0926\freertos.o: ../Core/Src/freertos.c
 imb-remote-v1-freertos-2024-0926\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-imb-remote-v1-freertos-2024-0926\freertos.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
-imb-remote-v1-freertos-2024-0926\freertos.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+imb-remote-v1-freertos-2024-0926\freertos.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+imb-remote-v1-freertos-2024-0926\freertos.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 imb-remote-v1-freertos-2024-0926\freertos.o: ../Core/Inc/FreeRTOSConfig.h
 imb-remote-v1-freertos-2024-0926\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 imb-remote-v1-freertos-2024-0926\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -47,8 +47,10 @@ imb-remote-v1-freertos-2024-0926\freertos.o: ../Middlewares/Third_Party/FreeRTOS
 imb-remote-v1-freertos-2024-0926\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 imb-remote-v1-freertos-2024-0926\freertos.o: ../HARDWARE/PWR_ON_OFF/PWR_ON_OFF.h
 imb-remote-v1-freertos-2024-0926\freertos.o: ../SYSTEM/sys/sys.h
-imb-remote-v1-freertos-2024-0926\freertos.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
-imb-remote-v1-freertos-2024-0926\freertos.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+imb-remote-v1-freertos-2024-0926\freertos.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\string.h
+imb-remote-v1-freertos-2024-0926\freertos.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 imb-remote-v1-freertos-2024-0926\freertos.o: ../Core/Inc/gpio.h
 imb-remote-v1-freertos-2024-0926\freertos.o: ../SYSTEM/delay/delay.h
 imb-remote-v1-freertos-2024-0926\freertos.o: ../HARDWARE/OLED/oled.h
+imb-remote-v1-freertos-2024-0926\freertos.o: ../HARDWARE/oleddispaly/oleddispaly.h
+imb-remote-v1-freertos-2024-0926\freertos.o: ../HARDWARE/si24r1/si24r1.h

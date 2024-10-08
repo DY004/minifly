@@ -27,6 +27,8 @@
 /* USER CODE BEGIN Includes */
 #include "PWR_ON_OFF.h"
 #include "oled.h"
+#include "oleddispaly.h"
+#include "si24r1.h"
 
 
 /* USER CODE END Includes */
@@ -178,9 +180,8 @@ void StartT_OLEDdisplay_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  OLED_ShowString(0,0,"Author:DY_FREE",16);
-	  OLED_ShowString(0,2,"Date:2024/09/29",16);
-	  OLED_ShowString(0,4,"Lab: Multi-level",16);
+	  Display_Update();
+	  ReconnectionFly();
 //	  osDelay(1);
   }
   /* USER CODE END StartT_OLEDdisplay_Task */

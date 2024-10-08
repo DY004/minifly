@@ -1,5 +1,4 @@
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ..\HARDWARE\mpu6050\mpu6050.c
-imb-fly-v1-freertos-2024-0926\mpu6050.o: ..\HARDWARE\mpu6050\MPU6050.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Core/Inc/stm32f1xx_hal_conf.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h
@@ -7,14 +6,14 @@ imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/CMSIS/Include/core_cm3.h
-imb-fly-v1-freertos-2024-0926\mpu6050.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+imb-fly-v1-freertos-2024-0926\mpu6050.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/CMSIS/Include/cmsis_version.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-imb-fly-v1-freertos-2024-0926\mpu6050.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+imb-fly-v1-freertos-2024-0926\mpu6050.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stddef.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
@@ -31,13 +30,14 @@ imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+imb-fly-v1-freertos-2024-0926\mpu6050.o: ..\HARDWARE\mpu6050\MPU6050.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../HARDWARE/iic/iic.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Core/Inc/gpio.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Core/Inc/main.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../SYSTEM/delay/delay.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../SYSTEM/sys/sys.h
-imb-fly-v1-freertos-2024-0926\mpu6050.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
-imb-fly-v1-freertos-2024-0926\mpu6050.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+imb-fly-v1-freertos-2024-0926\mpu6050.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\string.h
+imb-fly-v1-freertos-2024-0926\mpu6050.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../Core/Inc/usart.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../HARDWARE/WS2812B_led/WS2812B_led.h
 imb-fly-v1-freertos-2024-0926\mpu6050.o: ../HARDWARE/structconfig.h

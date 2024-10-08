@@ -9,7 +9,7 @@
 * 程序作者：愤怒的小孩
 * 版权所有：西安天际智联信息技术有限公司
 *******************************************************************************************/
-//#include "stm32f10x.h"
+#include "stm32f1xx_hal.h"
 #include "iic.h"
 #include "delay.h"
 #include "gpio.h"
@@ -67,6 +67,17 @@ void SDA_OUT(void)
 //	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP;
 //    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 //	GPIO_Init(GPIOB, &GPIO_InitStructure);
+	
+	//把上述代码移植成hal库形式的代码。
+  GPIO_InitTypeDef GPIO_InitStruct = {0};	
+  
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+  
+  GPIO_InitStruct.Pin = MPU6050_SDA_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 }
 
 /******************************************************************************
@@ -85,6 +96,17 @@ void SDA_IN(void)
 //	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_7 ;
 //	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IN_FLOATING;
 //	GPIO_Init(GPIOB, &GPIO_InitStructure);
+	
+		//把上述代码移植成hal库形式的代码。
+  GPIO_InitTypeDef GPIO_InitStruct = {0};	
+  
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+  
+  GPIO_InitStruct.Pin = MPU6050_SDA_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 }
 
 /******************************************************************************

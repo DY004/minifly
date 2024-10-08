@@ -30,11 +30,17 @@
 #include "PWR_ON_OFF.h"
 #include "PWR_ON.h"
 #include "oled.h"
+#include "string.h"
+#include "stdio.h"
+#include "si24r1.h"
+#include "oleddispaly.h"
+
 
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+uint16_t AdcBuf[4]={0};
 
 /* USER CODE END PTD */
 
@@ -100,8 +106,17 @@ int main(void)
   MX_USART1_UART_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
-  PWR_ON();
-  OLED_Init();
+  PWR_ON();//开机
+  OLED_Init();//OLED的初始化
+  SI24R1_Config();
+  HAL_ADCEx_Calibration_Start(&hadc1);
+  HAL_ADC_Start_DMA(&hadc1,(uint32_t *)AdcBuf,4);
+  WaitFlY_Connection();
+  Display_init();
+  
+  
+  
+//  printf("准备开始执行动作\r\n");//串口测试完毕，这个printf语句可以进行注释。
 
   /* USER CODE END 2 */
 

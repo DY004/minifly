@@ -28,6 +28,13 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "PWR_ON.h"
+#include "si24r1.h"
+#include "MPU6050.h"
+#include "fbm320.h"
+#include "motor.h"
+#include "paramsave.h"
+#include "pid.h"
+#include "WS2812B_led.h"
 
 /* USER CODE END Includes */
 
@@ -98,6 +105,14 @@ int main(void)
   MX_TIM3_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  SI24R1_Init();
+  MPU6050_Init();
+  FBM320_Init(); //FBM320初始化(气压计蓝) 
+//  MOTOR_Init(); //电机输出初始化
+//  BATT_Init(); //电池电压检测初始化
+	PID_ReadFlash(); //Flash中的数据读取
+	PidParameter_init(); //PID参数初始化
+	RGB_LED_Off();	//初始化关闭所有RGB灯
 
   /* USER CODE END 2 */
 

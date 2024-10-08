@@ -22,6 +22,45 @@
 
 /* USER CODE BEGIN 0 */
 
+#include <string.h>
+#include <stdio.h>
+#include "stdarg.h"
+
+
+void u1_SendArray(uint8_t *Array, uint16_t Length)	//发送一个数组
+{
+    uint16_t i;
+    for (i = 0; i < Length; i ++)
+    {
+        Usart_SendByte(Array[i]);
+    }
+}
+
+
+/*****************  发送字符 **********************/
+void Usart_SendByte(uint8_t str)
+{
+    HAL_UART_Transmit(&huart1, &str, 1, 1000);
+}
+
+/*****************  发送字符串 **********************/
+void Usart_SendString(uint8_t *str)
+{
+    unsigned int k=0;
+    do
+    {
+        HAL_UART_Transmit(&huart1,(uint8_t *)(str + k),1,1000);
+        k++;
+    } while(*(str + k)!='\0');
+}
+
+int fputc(int ch, FILE *f)
+{
+    HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFFFF);
+    return ch;
+}
+
+
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart1;

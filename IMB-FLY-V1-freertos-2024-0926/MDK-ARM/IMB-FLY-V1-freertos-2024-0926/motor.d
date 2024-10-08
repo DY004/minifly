@@ -1,9 +1,33 @@
 imb-fly-v1-freertos-2024-0926\motor.o: ..\HARDWARE\motor\motor.c
-imb-fly-v1-freertos-2024-0926\motor.o: D:\keil5\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h
-imb-fly-v1-freertos-2024-0926\motor.o: .\RTE\_IMB-FLY-V1-freertos-2024-0926\RTE_Components.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Core/Inc/stm32f1xx_hal_conf.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
 imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/CMSIS/Include/core_cm3.h
-imb-fly-v1-freertos-2024-0926\motor.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+imb-fly-v1-freertos-2024-0926\motor.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/CMSIS/Include/cmsis_version.h
 imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
-imb-fly-v1-freertos-2024-0926\motor.o: D:\keil5\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include\system_stm32f10x.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
+imb-fly-v1-freertos-2024-0926\motor.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
+imb-fly-v1-freertos-2024-0926\motor.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+imb-fly-v1-freertos-2024-0926\motor.o: ..\HARDWARE\motor\motor.h

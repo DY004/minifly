@@ -1,11 +1,11 @@
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ..\HARDWARE\WS2812B_led\WS2812B_led.c
-imb-fly-v1-freertos-2024-0926\ws2812b_led.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+imb-fly-v1-freertos-2024-0926\ws2812b_led.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../SYSTEM/delay/delay.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../SYSTEM/sys/sys.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/CMSIS/Include/core_cm3.h
-imb-fly-v1-freertos-2024-0926\ws2812b_led.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+imb-fly-v1-freertos-2024-0926\ws2812b_led.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/CMSIS/Include/cmsis_version.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -16,7 +16,7 @@ imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-imb-fly-v1-freertos-2024-0926\ws2812b_led.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+imb-fly-v1-freertos-2024-0926\ws2812b_led.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stddef.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
@@ -33,8 +33,8 @@ imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
-imb-fly-v1-freertos-2024-0926\ws2812b_led.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
-imb-fly-v1-freertos-2024-0926\ws2812b_led.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+imb-fly-v1-freertos-2024-0926\ws2812b_led.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\string.h
+imb-fly-v1-freertos-2024-0926\ws2812b_led.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Core/Inc/gpio.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ../Core/Inc/main.h
 imb-fly-v1-freertos-2024-0926\ws2812b_led.o: ..\HARDWARE\WS2812B_led\WS2812B_led.h

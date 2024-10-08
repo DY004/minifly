@@ -48,7 +48,7 @@
 "imb-remote-v1-freertos-2024-0926\stmflash.o"
 "imb-remote-v1-freertos-2024-0926\sys.o"
 "imb-remote-v1-freertos-2024-0926\delay.o"
---strict --scatter "IMB-remote-V1-freertos-2024-0926\IMB-remote-V1-freertos-2024-0926.sct"
+--library_type=microlib --strict --scatter "IMB-remote-V1-freertos-2024-0926\IMB-remote-V1-freertos-2024-0926.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "IMB-remote-V1-freertos-2024-0926.map" -o IMB-remote-V1-freertos-2024-0926\IMB-remote-V1-freertos-2024-0926.axf

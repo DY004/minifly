@@ -175,7 +175,9 @@ void ANO_DT_Data_Exchange(void)
 *************************************************************************************/
 void ANO_DT_Send_Data(uint8_t *dataToSend , uint8_t length)
 {
-	usart_send(dataToSend, length);
+//	usart_send(dataToSend, length);
+	//将上述代码改成hal库形式的
+	u1_SendArray(dataToSend,length);
 }
 
 static void ANO_DT_Send_Check(uint8_t head, uint8_t check_sum)
