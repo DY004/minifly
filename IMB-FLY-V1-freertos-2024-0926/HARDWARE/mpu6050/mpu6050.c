@@ -103,6 +103,7 @@ uint8_t MPU6050_getDeviceID(void)
 {
 	uint8_t buf;
 	MPU6050_ReadByte(MPU6050_RA_WHO_AM_I, &buf);
+//	printf("MPU6050_RA_WHO_AM_I的值是  %X\n",buf);
 	return buf;
 }
 
@@ -167,6 +168,9 @@ void MPU6050_GyroRead(int16_t *gyroData)
     gyroData[0] = (int16_t)((buf[0] << 8) | buf[1]) ;
     gyroData[1] = (int16_t)((buf[2] << 8) | buf[3]) ;
     gyroData[2] = (int16_t)((buf[4] << 8) | buf[5]) ;
+//	printf("gyroData[0]的值是：%d\r\n",gyroData[0]);
+//	printf("gyroData[1]的值是：%d\r\n",gyroData[1]);
+//	printf("gyroData[2]的值是：%d\r\n",gyroData[2]);
 }
 
 /******************************************************************************
@@ -183,6 +187,7 @@ void MPU6050_TempRead(float *tempdata)
 	MPU6050_ReadMultBytes(MPU6050_RA_TEMP_OUT_H, 2, buf);
 	data = (int16_t)((buf[0] << 8) | buf[1]) ;
 	*tempdata = 36.53f + ((float)data/340.0f);
+//	printf("tempdata的值是：%f\r\n",*tempdata);
 }
 
 /******************************************************************************
@@ -328,8 +333,8 @@ void MPU6050_Offset(void)
 			 GYRO_Offset_LED();
 		     SENSER_FLAG_SET(ACC_OFFSET);//校准加速度
 			
-//			 printf("GYRO_OFFSET_RAW Value :X=%d  Y=%d  Z=%d\n",GYRO_OFFSET_RAW.X,GYRO_OFFSET_RAW.Y,GYRO_OFFSET_RAW.Z);
-//			 printf("\n");
+			 printf("GYRO_OFFSET_RAW Value :X=%d  Y=%d  Z=%d\n",GYRO_OFFSET_RAW.X,GYRO_OFFSET_RAW.Y,GYRO_OFFSET_RAW.Z);
+			 printf("\n");
 		}
 	}
 	if(GET_FLAG(ACC_OFFSET)) //加速度计进行零偏校准 

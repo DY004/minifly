@@ -9,7 +9,6 @@
 "imb-fly-v1-freertos-2024-0926\usart.o"
 "imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o"
 "imb-fly-v1-freertos-2024-0926\stm32f1xx_hal_msp.o"
-"imb-fly-v1-freertos-2024-0926\stm32f1xx_hal_timebase_tim.o"
 "imb-fly-v1-freertos-2024-0926\stm32f1xx_hal_gpio_ex.o"
 "imb-fly-v1-freertos-2024-0926\stm32f1xx_hal_adc.o"
 "imb-fly-v1-freertos-2024-0926\stm32f1xx_hal_adc_ex.o"
@@ -48,6 +47,8 @@
 "imb-fly-v1-freertos-2024-0926\stmflash.o"
 "imb-fly-v1-freertos-2024-0926\motor.o"
 "imb-fly-v1-freertos-2024-0926\fbm320.o"
+"imb-fly-v1-freertos-2024-0926\bme280.o"
+"imb-fly-v1-freertos-2024-0926\myiic.o"
 "imb-fly-v1-freertos-2024-0926\delay.o"
 "imb-fly-v1-freertos-2024-0926\sys.o"
 "imb-fly-v1-freertos-2024-0926\paramsave.o"
@@ -58,7 +59,7 @@
 "imb-fly-v1-freertos-2024-0926\ano_dt.o"
 "imb-fly-v1-freertos-2024-0926\imu.o"
 "imb-fly-v1-freertos-2024-0926\filter.o"
---strict --scatter "IMB-FLY-V1-freertos-2024-0926\IMB-FLY-V1-freertos-2024-0926.sct"
+--library_type=microlib --strict --scatter "IMB-FLY-V1-freertos-2024-0926\IMB-FLY-V1-freertos-2024-0926.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "IMB-FLY-V1-freertos-2024-0926.map" -o IMB-FLY-V1-freertos-2024-0926\IMB-FLY-V1-freertos-2024-0926.axf

@@ -55,6 +55,7 @@
 osThreadId PWR_TaskHandle;
 osThreadId LED_TaskHandle;
 osThreadId OLEDdisplay_TaskHandle;
+osThreadId ReconnectionFly_TaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -64,6 +65,7 @@ osThreadId OLEDdisplay_TaskHandle;
 void Start_PWR_Task(void const * argument);
 void Start_LED_Task(void const * argument);
 void StartT_OLEDdisplay_Task(void const * argument);
+void Start_ReconnectionFly_Task(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -121,6 +123,10 @@ void MX_FREERTOS_Init(void) {
   /* definition and creation of OLEDdisplay_Task */
   osThreadDef(OLEDdisplay_Task, StartT_OLEDdisplay_Task, osPriorityIdle, 0, 128);
   OLEDdisplay_TaskHandle = osThreadCreate(osThread(OLEDdisplay_Task), NULL);
+
+  /* definition and creation of ReconnectionFly_Task */
+  osThreadDef(ReconnectionFly_Task, Start_ReconnectionFly_Task, osPriorityIdle, 0, 128);
+  ReconnectionFly_TaskHandle = osThreadCreate(osThread(ReconnectionFly_Task), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -181,10 +187,28 @@ void StartT_OLEDdisplay_Task(void const * argument)
   for(;;)
   {
 	  Display_Update();
-	  ReconnectionFly();
 //	  osDelay(1);
   }
   /* USER CODE END StartT_OLEDdisplay_Task */
+}
+
+/* USER CODE BEGIN Header_Start_ReconnectionFly_Task */
+/**
+* @brief Function implementing the ReconnectionFly_Task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Start_ReconnectionFly_Task */
+void Start_ReconnectionFly_Task(void const * argument)
+{
+  /* USER CODE BEGIN Start_ReconnectionFly_Task */
+  /* Infinite loop */
+  for(;;)
+  {
+	  ReconnectionFly();
+	  osDelay(1);
+  }
+  /* USER CODE END Start_ReconnectionFly_Task */
 }
 
 /* Private application code --------------------------------------------------*/

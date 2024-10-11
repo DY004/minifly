@@ -1,18 +1,7 @@
-#ifndef _PWR_ON_H
-#define _PWR_ON_H
-#include "sys.h"
+#ifndef   _battery_adc_H
+#define   _battery_adc_H
 
-
-
-void battery_adc(void);
-
-
-
-
-
-
-
+void BATT_Init(void);
+void LowVoltage_Alarm(void);
 
 #endif
-
-

@@ -6,14 +6,14 @@ imb-fly-v1-freertos-2024-0926\fbm320.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm3
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Drivers/CMSIS/Include/core_cm3.h
-imb-fly-v1-freertos-2024-0926\fbm320.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+imb-fly-v1-freertos-2024-0926\fbm320.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Drivers/CMSIS/Include/cmsis_version.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-imb-fly-v1-freertos-2024-0926\fbm320.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+imb-fly-v1-freertos-2024-0926\fbm320.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
@@ -34,12 +34,12 @@ imb-fly-v1-freertos-2024-0926\fbm320.o: ..\HARDWARE\fbm320\fbm320.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../HARDWARE/iic/iic.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Core/Inc/gpio.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../Core/Inc/main.h
-imb-fly-v1-freertos-2024-0926\fbm320.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdio.h
-imb-fly-v1-freertos-2024-0926\fbm320.o: ../SYSTEM/delay/delay.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../SYSTEM/sys/sys.h
-imb-fly-v1-freertos-2024-0926\fbm320.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\string.h
+imb-fly-v1-freertos-2024-0926\fbm320.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
+imb-fly-v1-freertos-2024-0926\fbm320.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+imb-fly-v1-freertos-2024-0926\fbm320.o: ../SYSTEM/delay/delay.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../HARDWARE/structconfig.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../HARDWARE/si24r1/si24r1.h
-imb-fly-v1-freertos-2024-0926\fbm320.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\math.h
+imb-fly-v1-freertos-2024-0926\fbm320.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../HARDWARE/WS2812B_led/WS2812B_led.h
 imb-fly-v1-freertos-2024-0926\fbm320.o: ../IMU/filter.h

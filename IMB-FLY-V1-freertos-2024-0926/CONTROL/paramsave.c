@@ -300,7 +300,7 @@ void PID_ReadFlash(void)
 	}
 	else
 	{
-//		printf("Flash Read OK!!!\r\n");
+		printf("Flash Read OK!!!\r\n");
 		DefaultParams_WriteFlash();
 	}
 	/*

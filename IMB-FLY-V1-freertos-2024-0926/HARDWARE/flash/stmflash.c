@@ -138,6 +138,5 @@ void Flash_PageErase(uint32_t PageAddress)
 #endif /* FLASH_BANK2_END */
   }
 
- 
 
   

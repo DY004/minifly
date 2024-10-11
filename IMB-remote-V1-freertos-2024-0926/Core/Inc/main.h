@@ -67,6 +67,7 @@ void Error_Handler(void);
 #define NRF_CE_GPIO_Port GPIOB
 #define NRF_IRQ_Pin GPIO_PIN_1
 #define NRF_IRQ_GPIO_Port GPIOB
+#define NRF_IRQ_EXTI_IRQn EXTI1_IRQn
 #define OLED_SDA_Pin GPIO_PIN_10
 #define OLED_SDA_GPIO_Port GPIOB
 #define OLED_SCL_Pin GPIO_PIN_11

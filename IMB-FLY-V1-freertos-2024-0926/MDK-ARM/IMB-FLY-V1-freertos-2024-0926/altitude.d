@@ -1,9 +1,9 @@
 imb-fly-v1-freertos-2024-0926\altitude.o: ..\CONTROL\altitude.c
 imb-fly-v1-freertos-2024-0926\altitude.o: ..\CONTROL\altitude.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../HARDWARE/fbm320/fbm320.h
-imb-fly-v1-freertos-2024-0926\altitude.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+imb-fly-v1-freertos-2024-0926\altitude.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../HARDWARE/structconfig.h
-imb-fly-v1-freertos-2024-0926\altitude.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+imb-fly-v1-freertos-2024-0926\altitude.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../HARDWARE/si24r1/si24r1.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../Core/Inc/gpio.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../Core/Inc/main.h
@@ -20,7 +20,7 @@ imb-fly-v1-freertos-2024-0926\altitude.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-imb-fly-v1-freertos-2024-0926\altitude.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+imb-fly-v1-freertos-2024-0926\altitude.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
@@ -38,7 +38,7 @@ imb-fly-v1-freertos-2024-0926\altitude.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/st
 imb-fly-v1-freertos-2024-0926\altitude.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../SYSTEM/sys/sys.h
-imb-fly-v1-freertos-2024-0926\altitude.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\string.h
+imb-fly-v1-freertos-2024-0926\altitude.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ../IMU/imu.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ..\CONTROL\pid.h
 imb-fly-v1-freertos-2024-0926\altitude.o: ..\CONTROL\control.h

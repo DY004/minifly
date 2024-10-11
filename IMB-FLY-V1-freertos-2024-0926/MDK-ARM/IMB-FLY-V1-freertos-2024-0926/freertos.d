@@ -1,7 +1,7 @@
 imb-fly-v1-freertos-2024-0926\freertos.o: ../Core/Src/freertos.c
 imb-fly-v1-freertos-2024-0926\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-imb-fly-v1-freertos-2024-0926\freertos.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stddef.h
-imb-fly-v1-freertos-2024-0926\freertos.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+imb-fly-v1-freertos-2024-0926\freertos.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+imb-fly-v1-freertos-2024-0926\freertos.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 imb-fly-v1-freertos-2024-0926\freertos.o: ../Core/Inc/FreeRTOSConfig.h
 imb-fly-v1-freertos-2024-0926\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 imb-fly-v1-freertos-2024-0926\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
@@ -46,3 +46,17 @@ imb-fly-v1-freertos-2024-0926\freertos.o: ../Middlewares/Third_Party/FreeRTOS/So
 imb-fly-v1-freertos-2024-0926\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 imb-fly-v1-freertos-2024-0926\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 imb-fly-v1-freertos-2024-0926\freertos.o: ../HARDWARE/PWR_ON_OFF/PWR_ON_OFF.h
+imb-fly-v1-freertos-2024-0926\freertos.o: ../HARDWARE/WS2812B_led/WS2812B_led.h
+imb-fly-v1-freertos-2024-0926\freertos.o: ../HARDWARE/BME280/bme280.h
+imb-fly-v1-freertos-2024-0926\freertos.o: ../SYSTEM/sys/sys.h
+imb-fly-v1-freertos-2024-0926\freertos.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
+imb-fly-v1-freertos-2024-0926\freertos.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+imb-fly-v1-freertos-2024-0926\freertos.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdbool.h
+imb-fly-v1-freertos-2024-0926\freertos.o: ../CONTROL/paramsave.h
+imb-fly-v1-freertos-2024-0926\freertos.o: ../HARDWARE/mpu6050/MPU6050.h
+imb-fly-v1-freertos-2024-0926\freertos.o: ../COMMUNICATE/ANO_DT.h
+imb-fly-v1-freertos-2024-0926\freertos.o: ../IMU/imu.h
+imb-fly-v1-freertos-2024-0926\freertos.o: ../HARDWARE/structconfig.h
+imb-fly-v1-freertos-2024-0926\freertos.o: ../HARDWARE/si24r1/si24r1.h
+imb-fly-v1-freertos-2024-0926\freertos.o: ../Core/Inc/gpio.h
+imb-fly-v1-freertos-2024-0926\freertos.o: ../COMMUNICATE/remotedata.h

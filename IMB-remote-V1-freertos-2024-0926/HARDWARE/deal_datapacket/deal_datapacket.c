@@ -14,7 +14,6 @@
 #include "si24r1.h"
 #include "deal_datapacket.h"
 #include "usart.h"
-float TX_ERROR_PERCENT = 0;          //遥控数据丢包率
 FLY_TYPE FLY;
 
 u8 SENSER_OFFSET_FLAG;

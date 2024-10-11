@@ -87,6 +87,10 @@ void MX_TIM3_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN TIM3_Init 2 */
+  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);//PWM执行必不可少的代码之一。
+  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_2);//PWM执行必不可少的代码之一。
+  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_3);//PWM执行必不可少的代码之一。
+  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_4);//PWM执行必不可少的代码之一。
 
   /* USER CODE END TIM3_Init 2 */
   HAL_TIM_MspPostInit(&htim3);

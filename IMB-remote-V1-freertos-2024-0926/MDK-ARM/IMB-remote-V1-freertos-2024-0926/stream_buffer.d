@@ -1,8 +1,8 @@
 imb-remote-v1-freertos-2024-0926\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
-imb-remote-v1-freertos-2024-0926\stream_buffer.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdint.h
-imb-remote-v1-freertos-2024-0926\stream_buffer.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\string.h
+imb-remote-v1-freertos-2024-0926\stream_buffer.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+imb-remote-v1-freertos-2024-0926\stream_buffer.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
 imb-remote-v1-freertos-2024-0926\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-imb-remote-v1-freertos-2024-0926\stream_buffer.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+imb-remote-v1-freertos-2024-0926\stream_buffer.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
 imb-remote-v1-freertos-2024-0926\stream_buffer.o: ../Core/Inc/FreeRTOSConfig.h
 imb-remote-v1-freertos-2024-0926\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 imb-remote-v1-freertos-2024-0926\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

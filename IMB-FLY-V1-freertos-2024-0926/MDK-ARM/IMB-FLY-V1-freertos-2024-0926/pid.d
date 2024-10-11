@@ -2,9 +2,9 @@ imb-fly-v1-freertos-2024-0926\pid.o: ..\CONTROL\pid.c
 imb-fly-v1-freertos-2024-0926\pid.o: ..\CONTROL\pid.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../IMU/imu.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../HARDWARE/structconfig.h
-imb-fly-v1-freertos-2024-0926\pid.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+imb-fly-v1-freertos-2024-0926\pid.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../HARDWARE/si24r1/si24r1.h
-imb-fly-v1-freertos-2024-0926\pid.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+imb-fly-v1-freertos-2024-0926\pid.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../Core/Inc/gpio.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../Core/Inc/main.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
@@ -20,7 +20,7 @@ imb-fly-v1-freertos-2024-0926\pid.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-imb-fly-v1-freertos-2024-0926\pid.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+imb-fly-v1-freertos-2024-0926\pid.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
@@ -38,6 +38,6 @@ imb-fly-v1-freertos-2024-0926\pid.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1
 imb-fly-v1-freertos-2024-0926\pid.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../SYSTEM/sys/sys.h
-imb-fly-v1-freertos-2024-0926\pid.o: D:\Program Files (x86)\keil5\ARM\ARMCC\Bin\..\include\string.h
+imb-fly-v1-freertos-2024-0926\pid.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
 imb-fly-v1-freertos-2024-0926\pid.o: ../HARDWARE/WS2812B_led/WS2812B_led.h
 imb-fly-v1-freertos-2024-0926\pid.o: ..\CONTROL\ParamSave.h

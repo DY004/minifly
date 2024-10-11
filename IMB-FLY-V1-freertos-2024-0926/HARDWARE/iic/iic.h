@@ -2,6 +2,8 @@
 #define   _IIC_H
 #include "stdint.h"
 #include "gpio.h"
+#include "sys.h"
+
 
 #define SCL_H         HAL_GPIO_WritePin(MPU6050_SCL_GPIO_Port,MPU6050_SCL_Pin,GPIO_PIN_SET)
 #define SCL_L         HAL_GPIO_WritePin(MPU6050_SCL_GPIO_Port,MPU6050_SCL_Pin,GPIO_PIN_RESET)
@@ -24,6 +26,8 @@ uint8_t IIC_ReadByteFromSlave(uint8_t I2C_Addr,uint8_t reg,uint8_t *buf);
 uint8_t IIC_ReadMultByteFromSlave(uint8_t dev, uint8_t reg, uint8_t length, uint8_t *data);
 uint8_t IIC_WriteByteToSlave(uint8_t I2C_Addr,uint8_t reg,uint8_t buf);
 uint8_t IIC_WriteMultByteToSlave(uint8_t dev, uint8_t reg, uint8_t length, uint8_t* data);
+u8 iicDevReadByte(u8 devaddr,u8 addr);
+void iicDevRead(u8 devaddr,u8 addr,u8 len,u8 *rbuf);
 
 
 #endif

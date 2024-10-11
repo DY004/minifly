@@ -106,14 +106,14 @@ void SI24R1_Config(void)
 	SPI_Write_Byte(WRITE_REG_CMD + CONFIG, 0x0f);   						//默认处于接收模式
 
 //	读回配置信息，防止配置出错（调试代码的时候可以使用，程序正常运行代码时，注释掉这些打印代码）
-	printf("SETUP_AW:%x\r\n",SPI_Read_Byte(READ_REG_CMD+SETUP_AW));
-	printf("SETUP_RETR:%x\r\n",SPI_Read_Byte(READ_REG_CMD+SETUP_RETR));
-	printf("EN_RXADDR:%x\r\n",SPI_Read_Byte(READ_REG_CMD+EN_RXADDR));
-	printf("EN_AA:%x\r\n",SPI_Read_Byte(READ_REG_CMD+EN_AA));
-	printf("RF_SETUP:%x\r\n",SPI_Read_Byte(READ_REG_CMD+RF_SETUP));
-	printf("RF_CH:%x\r\n",SPI_Read_Byte(READ_REG_CMD+RF_CH));
-	printf("RX_PW_P0:%x\r\n",SPI_Read_Byte(READ_REG_CMD+RX_PW_P0));
-	printf("CONFIG:%x\r\n",SPI_Read_Byte(READ_REG_CMD+CONFIG));
+//	printf("SETUP_AW:%x\r\n",SPI_Read_Byte(READ_REG_CMD+SETUP_AW));
+//	printf("SETUP_RETR:%x\r\n",SPI_Read_Byte(READ_REG_CMD+SETUP_RETR));
+//	printf("EN_RXADDR:%x\r\n",SPI_Read_Byte(READ_REG_CMD+EN_RXADDR));
+//	printf("EN_AA:%x\r\n",SPI_Read_Byte(READ_REG_CMD+EN_AA));
+//	printf("RF_SETUP:%x\r\n",SPI_Read_Byte(READ_REG_CMD+RF_SETUP));
+//	printf("RF_CH:%x\r\n",SPI_Read_Byte(READ_REG_CMD+RF_CH));
+//	printf("RX_PW_P0:%x\r\n",SPI_Read_Byte(READ_REG_CMD+RX_PW_P0));
+//	printf("CONFIG:%x\r\n",SPI_Read_Byte(READ_REG_CMD+CONFIG));
 
 	CE_HIGH;
 }
@@ -121,42 +121,51 @@ void SI24R1_Config(void)
 //IRQ引脚对应的EXTI中断处理函数
 void EXTI1_IRQHandler(void)
 {
-//	CE_LOW;											//拉低CE，以便读取SI24R1中STATUS中的数据
-//	sta = SPI_Read_Byte(READ_REG_CMD+STATUS);		//读取STATUS中的数据，以便判断是由什么中断源触发的IRQ中断
-//	
-//	if(sta & TX_DS)                              	//数据发送成功，并且收到了应答信号
-//	{										
-//		RX_Mode();								 	//将SI24R1的模式改为接收模式，等待接收数据
-//		if(ButtonMask & 0x01)
-//		{
+	CE_LOW;											//拉低CE，以便读取SI24R1中STATUS中的数据
+	sta = SPI_Read_Byte(READ_REG_CMD+STATUS);		//读取STATUS中的数据，以便判断是由什么中断源触发的IRQ中断
+	
+	if(sta & TX_DS)                              	//数据发送成功，并且收到了应答信号
+	{										
+		RX_Mode();								 	//将SI24R1的模式改为接收模式，等待接收数据
+		if(ButtonMask & 0x01)
+		{
 //			LED_On(LED1);						 	//LED1常亮表示飞机已经解锁成功，并正在进行数据通讯
-//		}else
-//		{
+			//上述代码用hal库代替
+			HAL_GPIO_WritePin(LED_green_GPIO_Port,LED_green_Pin,GPIO_PIN_RESET);
+			
+		}else
+		{
 //			LED_Toggle(LED1);					 	//LED1闪烁表示飞机加锁模式中，但是和飞机通讯成功
-//		}
-//		SPI_Write_Byte(WRITE_REG_CMD+STATUS,TX_DS);	//清除TX_DS中断
-//		SPI_Write_Byte(FLUSH_TX,0xff);              //清空TX_FIFO
-//	}
-//	else if(sta & RX_DR)                           	//数据接收成功
-//	{	
-//		FLY_Connect_OK	= 1;		                //飞机与遥控器已连接
-//		SI24R1_ReceivePacket(RxBuf);				//将数据从RX端的FIFO中读取出来
-//		FLYDataRx_OK 	= 1;
-//		SPI_Write_Byte(WRITE_REG_CMD+STATUS,RX_DR);	//清除RX_DR中断
-//	}
-//	else if(sta & MAX_RT)                          	//触发了MAX_RT中断
-//	{		
-//		if(TX_ERROR++>100)                          //遥控数据丢帧计数
-//		{
-//			Reconnection_flag = 1;			        //重连标志置位
-//			FLY_Connect_OK = 0 ;                    //飞机与遥控器断开连接
-//		}
+			//上述代码用hal库代替
+			HAL_GPIO_TogglePin(LED_green_GPIO_Port,LED_green_Pin);
+			
+		}
+		SPI_Write_Byte(WRITE_REG_CMD+STATUS,TX_DS);	//清除TX_DS中断
+		SPI_Write_Byte(FLUSH_TX,0xff);              //清空TX_FIFO
+	}
+	else if(sta & RX_DR)                           	//数据接收成功
+	{	
+		FLY_Connect_OK	= 1;		                //飞机与遥控器已连接
+		SI24R1_ReceivePacket(RxBuf);				//将数据从RX端的FIFO中读取出来
+		FLYDataRx_OK 	= 1;
+		SPI_Write_Byte(WRITE_REG_CMD+STATUS,RX_DR);	//清除RX_DR中断
+	}
+	else if(sta & MAX_RT)                          	//触发了MAX_RT中断
+	{		
+		if(TX_ERROR++>100)                          //遥控数据丢帧计数
+		{
+			Reconnection_flag = 1;			        //重连标志置位
+			FLY_Connect_OK = 0 ;                    //飞机与遥控器断开连接
+		}
 //		LED_Off(LED1);									  //LED1灭时，表示和飞机通讯中断
-//		RX_Mode();										  //将SI24R1的模式改为接收模式，等待接收数据
-//		SPI_Write_Byte(WRITE_REG_CMD+STATUS,MAX_RT);	  //清除MAX_RT中断
-//		SPI_Write_Byte(FLUSH_TX,0xff);                    //清空TX_FIFO
-////		printf("MAX_RT OK!!!\r\n");
-//	}
+		//上述代码用hal库代替
+		HAL_GPIO_WritePin(LED_green_GPIO_Port,LED_green_Pin,GPIO_PIN_SET);
+		
+		RX_Mode();										  //将SI24R1的模式改为接收模式，等待接收数据
+		SPI_Write_Byte(WRITE_REG_CMD+STATUS,MAX_RT);	  //清除MAX_RT中断
+		SPI_Write_Byte(FLUSH_TX,0xff);                    //清空TX_FIFO
+//		printf("MAX_RT OK!!!\r\n");
+	}
 //	EXTI_ClearITPendingBit(EXTI_Line1);
 }
 

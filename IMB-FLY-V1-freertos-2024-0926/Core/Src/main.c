@@ -35,6 +35,8 @@
 #include "paramsave.h"
 #include "pid.h"
 #include "WS2812B_led.h"
+#include "delay.h"
+#include "bme280.h"
 
 /* USER CODE END Includes */
 
@@ -88,6 +90,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
+	delay_init(72);
 
   /* USER CODE END Init */
 
@@ -105,12 +108,19 @@ int main(void)
   MX_TIM3_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  SI24R1_Init();
-  MPU6050_Init();
-  FBM320_Init(); //FBM320初始化(气压计蓝) 
+  PWR_ON();//开机启动
+  
+  
+  SI24R1_Init();//SI24硬件验证OK,代码验证OK
+  
+	MPU6050_Init();//MPU6050初始化（绿）,代码验证OK
+	MPU6050_CalOff();
+	MPU6050_Offset();
+//	bme280Init();//bme280初始化（绿）,代码验证OK
+//  FBM320_Init(); //FBM320初始化(气压计蓝) 
 //  MOTOR_Init(); //电机输出初始化
 //  BATT_Init(); //电池电压检测初始化
-	PID_ReadFlash(); //Flash中的数据读取
+	PID_ReadFlash(); //Flash中的数据读取,代码验证OK
 	PidParameter_init(); //PID参数初始化
 	RGB_LED_Off();	//初始化关闭所有RGB灯
 
@@ -184,27 +194,6 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
-
-/**
-  * @brief  Period elapsed callback in non blocking mode
-  * @note   This function is called  when TIM4 interrupt took place, inside
-  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
-  * a global variable "uwTick" used as application time base.
-  * @param  htim : TIM handle
-  * @retval None
-  */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  /* USER CODE BEGIN Callback 0 */
-
-  /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM4) {
-    HAL_IncTick();
-  }
-  /* USER CODE BEGIN Callback 1 */
-
-  /* USER CODE END Callback 1 */
-}
 
 /**
   * @brief  This function is executed in case of error occurrence.

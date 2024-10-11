@@ -1,6 +1,6 @@
 #ifndef __SYS_H
 #define __SYS_H	
-#include "stm32f1xx.h"
+#include "stm32f1xx_hal.h"
 
 #include "string.h"
 #include "stdio.h"

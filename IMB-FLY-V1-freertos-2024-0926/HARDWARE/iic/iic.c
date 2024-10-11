@@ -48,6 +48,10 @@ void IIC_GPIO_Init(void)
 //	GPIO_Init(GPIOB,&GPIO_InitStruct);
 //	
 //	GPIO_SetBits(GPIOB,GPIO_Pin_6|GPIO_Pin_7);
+	SCL_H;
+	SDA_H;
+	
+	
 }
 
 /******************************************************************************
@@ -76,7 +80,7 @@ void SDA_OUT(void)
   GPIO_InitStruct.Pin = MPU6050_SDA_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 }
 
@@ -105,7 +109,7 @@ void SDA_IN(void)
   GPIO_InitStruct.Pin = MPU6050_SDA_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 }
 
@@ -188,7 +192,7 @@ void IIC_Ack(void)
 	SCL_L;
 	SDA_OUT();
 	SDA_L;
-	delay_us(1);
+	delay_us(2);
 	SCL_H;
 	delay_us(2);
 	SCL_L;
@@ -207,9 +211,9 @@ void IIC_NAck(void)
 	SCL_L;
 	SDA_OUT();
 	SDA_H;
-	delay_us(1);
+	delay_us(2);
 	SCL_H;
-	delay_us(1);
+	delay_us(2);
 	SCL_L;
 }					 				     
 
@@ -232,11 +236,11 @@ void IIC_SendByte(uint8_t data)
 		else
 			SDA_L;
 		data <<= 1;
-		delay_us(1);			
+		delay_us(2);			
 		SCL_H;
-		delay_us(1);
+		delay_us(2);
 		SCL_L;	
-		delay_us(1);
+		delay_us(2);
     }	 
 } 	 
    
@@ -254,7 +258,7 @@ uint8_t IIC_ReadByte(uint8_t ack)
 	for(i=0;i<8;i++ )
 	{
 		SCL_L; 
-		delay_us(1);
+		delay_us(2);//修改成了2us
 		SCL_H;
 		receive<<=1;
 		if(SDA_read)receive++; //从机发送的电平
@@ -266,6 +270,36 @@ uint8_t IIC_ReadByte(uint8_t ack)
         IIC_NAck(); //发送nACK  
     return receive;
 }
+
+
+//从指定地址读出一个数据
+//ReadAddr:开始读数的地址  
+//返回值  :读到的数据
+//u8 iicDevReadByte(u8 devaddr,u8 addr)
+//{				  
+//	u8 temp=0;		  	    																 
+//	IIC_Start();  
+////	IIC_Send_Byte(devaddr);                                                    //发送器件写命令 	   
+////	IIC_Wait_Ack(); 
+////	IIC_Send_Byte(addr);                                                       //发送低地址
+////	IIC_Wait_Ack();	
+//	IIC_SendByte(devaddr);
+//	IIC_WaitAck();
+//	IIC_SendByte(addr);
+//	IIC_WaitAck();
+//	
+
+//	IIC_Start();  	 	   
+////	IIC_Send_Byte(devaddr|1);                                                  //发送器件读命令			   
+////	IIC_Wait_Ack();	 
+////	temp=IIC_Read_Byte(0);	
+//	IIC_SendByte(devaddr|1);
+//	IIC_WaitAck();
+//	temp = IIC_ReadByte(0);	
+//	IIC_Stop();                                                                //产生一个停止条件  
+//	return temp;
+//}
+
 
 /******************************************************************************
 * 函  数：uint8_t IIC_ReadByteFromSlave(uint8_t I2C_Addr,uint8_t addr)
@@ -399,5 +433,39 @@ uint8_t IIC_WriteMultByteToSlave(uint8_t dev, uint8_t reg, uint8_t length, uint8
 	IIC_Stop(); //产生一个停止条件
 	return 0;
 }
+
+
+//void iicDevRead(u8 devaddr,u8 addr,u8 len,u8 *rbuf)
+//{
+//	int i=0;
+//	IIC_Start();  
+////	IIC_Send_Byte(devaddr);  
+////	IIC_Wait_Ack();	
+////	IIC_Send_Byte(addr);                                                       //地址自增  
+////	IIC_Wait_Ack();	
+//	
+//	IIC_SendByte(devaddr);
+//	IIC_WaitAck();
+//	IIC_SendByte(addr);
+//	IIC_WaitAck();
+//	
+//	IIC_Start();  	
+////	IIC_Send_Byte(devaddr|1);  	
+////	IIC_Wait_Ack();	
+//	IIC_SendByte(devaddr|1);
+//	IIC_WaitAck();
+//	
+//	
+//	for(i=0; i<len; i++)
+//	{
+//		if(i==len-1)
+//		{
+//			rbuf[i]=IIC_ReadByte(0);                                          //最后一个字节不应答
+//		}
+//		else
+//			rbuf[i]=IIC_ReadByte(1);
+//	}
+//	IIC_Stop( );	
+//}
 
 
