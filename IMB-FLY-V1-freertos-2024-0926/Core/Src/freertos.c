@@ -34,6 +34,7 @@
 #include "imu.h"
 #include "si24r1.h"
 #include "remotedata.h"
+#include "tim.h"
 
 /* USER CODE END Includes */
 
@@ -218,8 +219,8 @@ void Start_BMP280_Task(void const * argument)
 ////		osDelay(100);
 //		printf("bmp280_high :%f\r\n\r\n",high);
 //	PID_ReadFlash();
-    SI24R1_SingalCheck(); //2.4G通信检测
-	SendToRemote(); //发送数据给遥控器
+//    SI24R1_SingalCheck(); //2.4G通信检测
+//	SendToRemote(); //发送数据给遥控器
 	osDelay(5);
   }
   /* USER CODE END Start_BMP280_Task */
@@ -247,8 +248,8 @@ void Start_SI24R1_SingalCheck(void const * argument)
 //	  ANO_DT_Data_Exchange();
 //	  MPU6050_GyroRead(buff);
 //	  MPU6050_TempRead(&buff_t);//
-	  Prepare_Data(); //获取姿态解算所需数据
-	  IMUupdate(&Gyr_rad,&Acc_filt,&Att_Angle); //四元数姿态解算  
+//	  Prepare_Data(); //获取姿态解算所需数据
+//	  IMUupdate(&Gyr_rad,&Acc_filt,&Att_Angle); //四元数姿态解算  
 	  osDelay(20);
   }
   /* USER CODE END Start_SI24R1_SingalCheck */
@@ -267,7 +268,7 @@ void Start_SI24R1_GetAddr(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  ANO_DT_Data_Exchange(); //更新数据到上位机
+//	  ANO_DT_Data_Exchange(); //更新数据到上位机
 	  osDelay(10);
   }
   /* USER CODE END Start_SI24R1_GetAddr */
@@ -286,8 +287,12 @@ void Start_Airplane_Enable(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  SI24R1_GetAddr(); //分配2.4G地址
-	  osDelay(5);
+//	  SI24R1_GetAddr(); //分配2.4G地址
+//	  osDelay(5);
+	  __HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_1,50);
+	  __HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_2,50);
+//	  __HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_3,200);
+//	  __HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_4,200);
   }
   /* USER CODE END Start_Airplane_Enable */
 }

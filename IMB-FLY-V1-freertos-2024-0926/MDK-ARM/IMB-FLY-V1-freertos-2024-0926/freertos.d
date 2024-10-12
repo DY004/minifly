@@ -60,3 +60,4 @@ imb-fly-v1-freertos-2024-0926\freertos.o: ../HARDWARE/structconfig.h
 imb-fly-v1-freertos-2024-0926\freertos.o: ../HARDWARE/si24r1/si24r1.h
 imb-fly-v1-freertos-2024-0926\freertos.o: ../Core/Inc/gpio.h
 imb-fly-v1-freertos-2024-0926\freertos.o: ../COMMUNICATE/remotedata.h
+imb-fly-v1-freertos-2024-0926\freertos.o: ../Core/Inc/tim.h
