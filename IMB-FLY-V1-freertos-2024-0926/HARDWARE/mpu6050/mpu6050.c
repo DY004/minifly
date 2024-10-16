@@ -134,7 +134,7 @@ void MPU6050_Check(void)
 	while(!MPU6050_testConnection())
 	{
 		printf("\rMPU6050 no connect...\r\n");
-		RGB_LED_green(); //绿灯常亮
+//		RGB_LED_green(); //绿灯常亮
 	}
 }
 
@@ -332,9 +332,8 @@ void MPU6050_Offset(void)
 			 PID_WriteFlash(); //保存陀螺仪的零偏数据
 			 GYRO_Offset_LED();
 		     SENSER_FLAG_SET(ACC_OFFSET);//校准加速度
-			
-			 printf("GYRO_OFFSET_RAW Value :X=%d  Y=%d  Z=%d\n",GYRO_OFFSET_RAW.X,GYRO_OFFSET_RAW.Y,GYRO_OFFSET_RAW.Z);
-			 printf("\n");
+//			 printf("GYRO_OFFSET_RAW Value :X=%d  Y=%d  Z=%d\n",GYRO_OFFSET_RAW.X,GYRO_OFFSET_RAW.Y,GYRO_OFFSET_RAW.Z);
+//			 printf("\n");
 		}
 	}
 	if(GET_FLAG(ACC_OFFSET)) //加速度计进行零偏校准 

@@ -31,6 +31,25 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 #include "sys.h"
 extern vu16 ADC_Calibrator[4];      //遥控通道ADC校准值
+extern vu16 ADC_ConvertedValue[4];  //遥控通道ADC值
+extern uint16_t AD_value[4];
+void ADC_Calibration(void);
+
+#define adc_max  10
+extern  uint16_t My_adcData [adc_max];
+typedef struct {
+	uint16_t value1;
+	uint16_t value2;
+	uint16_t value3;
+	uint16_t value4;
+}adcValue_type;
+
+extern uint16_t AD_value[4];
+ 
+extern  adcValue_type adcValue ;
+ 
+ 
+void ADC_dispose (void);
 
 /* USER CODE END Includes */
 

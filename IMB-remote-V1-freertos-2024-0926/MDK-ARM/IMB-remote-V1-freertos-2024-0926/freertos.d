@@ -52,3 +52,4 @@ imb-remote-v1-freertos-2024-0926\freertos.o: ../SYSTEM/delay/delay.h
 imb-remote-v1-freertos-2024-0926\freertos.o: ../HARDWARE/OLED/oled.h
 imb-remote-v1-freertos-2024-0926\freertos.o: ../HARDWARE/oleddispaly/oleddispaly.h
 imb-remote-v1-freertos-2024-0926\freertos.o: ../HARDWARE/si24r1/si24r1.h
+imb-remote-v1-freertos-2024-0926\freertos.o: ../Core/Inc/adc.h

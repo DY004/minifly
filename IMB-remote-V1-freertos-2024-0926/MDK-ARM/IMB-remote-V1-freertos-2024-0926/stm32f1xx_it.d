@@ -39,3 +39,12 @@ imb-remote-v1-freertos-2024-0926\stm32f1xx_it.o: ../Middlewares/Third_Party/Free
 imb-remote-v1-freertos-2024-0926\stm32f1xx_it.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
 imb-remote-v1-freertos-2024-0926\stm32f1xx_it.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 imb-remote-v1-freertos-2024-0926\stm32f1xx_it.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+imb-remote-v1-freertos-2024-0926\stm32f1xx_it.o: ../SYSTEM/delay/delay.h
+imb-remote-v1-freertos-2024-0926\stm32f1xx_it.o: ../SYSTEM/sys/sys.h
+imb-remote-v1-freertos-2024-0926\stm32f1xx_it.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
+imb-remote-v1-freertos-2024-0926\stm32f1xx_it.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+imb-remote-v1-freertos-2024-0926\stm32f1xx_it.o: ../Core/Inc/adc.h
+imb-remote-v1-freertos-2024-0926\stm32f1xx_it.o: ../Core/Inc/gpio.h
+imb-remote-v1-freertos-2024-0926\stm32f1xx_it.o: ../HARDWARE/deal_datapacket/deal_datapacket.h
+imb-remote-v1-freertos-2024-0926\stm32f1xx_it.o: ../HARDWARE/si24r1/si24r1.h
+imb-remote-v1-freertos-2024-0926\stm32f1xx_it.o: ../HARDWARE/senddata/senddata.h

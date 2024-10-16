@@ -41,3 +41,8 @@ imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: ../Middlewares/Third_Party/FreeRTO
 imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
 imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: ../HARDWARE/si24r1/si24r1.h
+imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: ../Core/Inc/gpio.h
+imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: ../COMMUNICATE/remotedata.h
+imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
+imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h

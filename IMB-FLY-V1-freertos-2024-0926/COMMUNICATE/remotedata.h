@@ -2,6 +2,7 @@
 #define   _REMOTEDATA_H
 
 //#include "stm32f10x.h"
+#include "stm32f1xx_hal.h"
 
 void Remote_Data_ReceiveAnalysis(void);
 void SI24R1_SingalCheck(void);

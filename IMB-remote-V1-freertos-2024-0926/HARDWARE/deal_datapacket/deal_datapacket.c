@@ -66,16 +66,11 @@ void PackData(u8 firstByte)
 	
 	ADC_Value[0] = 1500 + ((1000+ADC_ConvertedValue[0]*1000/4096) - ADC_Calibrator[0]);
 	ADC_Value[0] = ADC_ValueLimit(ADC_Value[0],1470,1530,1100,1900);
-
 	ADC_Value[1] = (ADC_ConvertedValue[1]*1000/4096); //油门0~1000;
-	
 	ADC_Value[2] = 1500 + ((1000+(ADC_ConvertedValue[2])*1000/4096) - ADC_Calibrator[2] );
 	ADC_Value[2] = ADC_ValueLimit(ADC_Value[2],1470,1530,1100,1900);
-	
 	ADC_Value[3] = 1500 + ((1000+(ADC_ConvertedValue[3])*1000/4096) - ADC_Calibrator[3] );
 	ADC_Value[3] = ADC_ValueLimit(ADC_Value[3],1470,1530,1100,1900);
-
-
 //	printf("ADC1:%d\r\n",ADC_Value[0]);
 //	printf("ADC2:%d\r\n",ADC_Value[1]);
 //	printf("ADC3:%d\r\n",ADC_Value[2]);
@@ -139,7 +134,7 @@ void ReceiveDataAnalysis(void)
 		FLY.Alt = ((s16)(RxBuf[10]<<8)|RxBuf[11])/100;
 		FLY.BattV = ((s16)(RxBuf[12]<<8)|RxBuf[13]);
 //		printf("SENSER_OFFSET_FLAG:0x%x\r\n",SENSER_OFFSET_FLAG);
-//		printf("Thr:%d Yaw:%d Rol:%d Pit:%d\r\n",Thr,Yaw,Rol,Pit);
+//		printf("Thr:%d Yaw:%d Rol:%d Pit:%d\r\n",FLY.Thr,FLY.Yaw,FLY.Rol,FLY.Pit);
 	}
 }
 
@@ -149,6 +144,7 @@ void CAL(void)
 	{
 		ADC_CALIBRATOR_OK = 1;
 //		printf("遥控器校准！\r\n");
+//		HAL_Delay(500);
 	}
 }
 

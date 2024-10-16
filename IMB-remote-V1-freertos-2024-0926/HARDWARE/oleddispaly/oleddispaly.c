@@ -278,30 +278,30 @@ void SenserOffsetDisplay(void)
 		}
 		Display_init();
 	}
-	//加速度校准
-	if(GET_FLAG(ACC_OFFSET))
-	{
-		OLED_ClearBlue();
-		while(GET_FLAG(ACC_OFFSET))
-		{
-			ReceiveDataAnalysis();//继续接收遥控数据
-			OLED_ShowCHineseString(byte(5),line4,JaSuDu,3); //加速度
-			OLED_ShowCHineseString(byte(4),line6,JZCG,4); //校准成功
-		}
-		Display_init();
-	}
-	//气压计校准
-	if(GET_FLAG(BAR_OFFSET))
-	{
-		OLED_ClearBlue();
-		while(GET_FLAG(BAR_OFFSET))
-		{
-			ReceiveDataAnalysis();//继续接收遥控数据
-			OLED_ShowCHineseString(byte(5),line4,QiYaJi,3); //气压计
-			OLED_ShowCHineseString(byte(4),line6,JZCG,4); //校准成功
-		}
-		Display_init();
-	}
+//	//加速度校准
+//	if(GET_FLAG(ACC_OFFSET))
+//	{
+//		OLED_ClearBlue();
+//		while(GET_FLAG(ACC_OFFSET))
+//		{
+//			ReceiveDataAnalysis();//继续接收遥控数据
+//			OLED_ShowCHineseString(byte(5),line4,JaSuDu,3); //加速度
+//			OLED_ShowCHineseString(byte(4),line6,JZCG,4); //校准成功
+//		}
+//		Display_init();
+//	}
+//	//气压计校准
+//	if(GET_FLAG(BAR_OFFSET))
+//	{
+//		OLED_ClearBlue();
+//		while(GET_FLAG(BAR_OFFSET))
+//		{
+//			ReceiveDataAnalysis();//继续接收遥控数据
+//			OLED_ShowCHineseString(byte(5),line4,QiYaJi,3); //气压计
+//			OLED_ShowCHineseString(byte(4),line6,JZCG,4); //校准成功
+//		}
+//		Display_init();
+//	}
 }
 
 //WiFi开关旋转显示
@@ -386,7 +386,7 @@ void ButtonCMDDisplay(void)
 	{
 		OLED_ShowString(byte(11),line4,"Lock  ",6);
 	}
-	SenserOffsetDisplay();
+//	SenserOffsetDisplay();
 	WiFiOnOffDisplay();
 	ModeSelectDisplay();
 }

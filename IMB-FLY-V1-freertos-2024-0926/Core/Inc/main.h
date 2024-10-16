@@ -63,6 +63,7 @@ void Error_Handler(void);
 #define LED_GREEN_GPIO_Port GPIOC
 #define RF_IRQ_Pin GPIO_PIN_2
 #define RF_IRQ_GPIO_Port GPIOB
+#define RF_IRQ_EXTI_IRQn EXTI2_IRQn
 #define RF_CSN_Pin GPIO_PIN_12
 #define RF_CSN_GPIO_Port GPIOB
 #define RF_CE_Pin GPIO_PIN_8

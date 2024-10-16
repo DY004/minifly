@@ -63,6 +63,11 @@ osThreadId BMP280_TaskHandle;
 osThreadId SI24R1_SingalCheck_TaskHandle;
 osThreadId SI24R1_GetAddr_TaskHandle;
 osThreadId Airplane_Enable_TaskHandle;
+osThreadId SendToRemote_TaskHandle;
+osThreadId ANO_DT_Data_TaskHandle;
+osThreadId Prepare_Data_TaskHandle;
+osThreadId IMUupdate_TaskHandle;
+osThreadId Control_TaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -75,6 +80,11 @@ void Start_BMP280_Task(void const * argument);
 void Start_SI24R1_SingalCheck(void const * argument);
 void Start_SI24R1_GetAddr(void const * argument);
 void Start_Airplane_Enable(void const * argument);
+void Start_SendToRemote_Task(void const * argument);
+void Start_ANO_DT_Data_Task(void const * argument);
+void StartT_Prepare_Data_Task(void const * argument);
+void Start_IMUupdate_Task(void const * argument);
+void StartTask11(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -145,6 +155,26 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(Airplane_Enable_Task, Start_Airplane_Enable, osPriorityIdle, 0, 128);
   Airplane_Enable_TaskHandle = osThreadCreate(osThread(Airplane_Enable_Task), NULL);
 
+  /* definition and creation of SendToRemote_Task */
+  osThreadDef(SendToRemote_Task, Start_SendToRemote_Task, osPriorityIdle, 0, 128);
+  SendToRemote_TaskHandle = osThreadCreate(osThread(SendToRemote_Task), NULL);
+
+  /* definition and creation of ANO_DT_Data_Task */
+  osThreadDef(ANO_DT_Data_Task, Start_ANO_DT_Data_Task, osPriorityIdle, 0, 128);
+  ANO_DT_Data_TaskHandle = osThreadCreate(osThread(ANO_DT_Data_Task), NULL);
+
+  /* definition and creation of Prepare_Data_Task */
+  osThreadDef(Prepare_Data_Task, StartT_Prepare_Data_Task, osPriorityIdle, 0, 128);
+  Prepare_Data_TaskHandle = osThreadCreate(osThread(Prepare_Data_Task), NULL);
+
+  /* definition and creation of IMUupdate_Task */
+  osThreadDef(IMUupdate_Task, Start_IMUupdate_Task, osPriorityIdle, 0, 128);
+  IMUupdate_TaskHandle = osThreadCreate(osThread(IMUupdate_Task), NULL);
+
+  /* definition and creation of Control_Task */
+  osThreadDef(Control_Task, StartTask11, osPriorityIdle, 0, 128);
+  Control_TaskHandle = osThreadCreate(osThread(Control_Task), NULL);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -183,8 +213,9 @@ void Start_LED_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin);
+//	  HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin);
 	  HAL_GPIO_TogglePin(LED_RED_GPIO_Port,LED_RED_Pin);
+//	  printf("KEY1_Pin  OK!!!\r\n");
 	  osDelay(500);
   }
   /* USER CODE END Start_LED_Task */
@@ -250,7 +281,8 @@ void Start_SI24R1_SingalCheck(void const * argument)
 //	  MPU6050_TempRead(&buff_t);//
 //	  Prepare_Data(); //获取姿态解算所需数据
 //	  IMUupdate(&Gyr_rad,&Acc_filt,&Att_Angle); //四元数姿态解算  
-	  osDelay(20);
+	  SI24R1_SingalCheck(); //2.4G通信检测	  
+	  osDelay(200);
   }
   /* USER CODE END Start_SI24R1_SingalCheck */
 }
@@ -268,8 +300,8 @@ void Start_SI24R1_GetAddr(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-//	  ANO_DT_Data_Exchange(); //更新数据到上位机
-	  osDelay(10);
+	  SI24R1_GetAddr(); //分配2.4G地址
+	  osDelay(400);
   }
   /* USER CODE END Start_SI24R1_GetAddr */
 }
@@ -287,14 +319,107 @@ void Start_Airplane_Enable(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-//	  SI24R1_GetAddr(); //分配2.4G地址
-//	  osDelay(5);
-	  __HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_1,50);
-	  __HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_2,50);
+	  osDelay(5);
+//	  __HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_1,50);
+//	  __HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_2,50);
 //	  __HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_3,200);
 //	  __HAL_TIM_SetCompare(&htim3,TIM_CHANNEL_4,200);
   }
   /* USER CODE END Start_Airplane_Enable */
+}
+
+/* USER CODE BEGIN Header_Start_SendToRemote_Task */
+/**
+* @brief Function implementing the SendToRemote_Task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Start_SendToRemote_Task */
+void Start_SendToRemote_Task(void const * argument)
+{
+  /* USER CODE BEGIN Start_SendToRemote_Task */
+  /* Infinite loop */
+  for(;;)
+  {
+	  SendToRemote();
+	  osDelay(300);
+  }
+  /* USER CODE END Start_SendToRemote_Task */
+}
+
+/* USER CODE BEGIN Header_Start_ANO_DT_Data_Task */
+/**
+* @brief Function implementing the ANO_DT_Data_Task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Start_ANO_DT_Data_Task */
+void Start_ANO_DT_Data_Task(void const * argument)
+{
+  /* USER CODE BEGIN Start_ANO_DT_Data_Task */
+  /* Infinite loop */
+  for(;;)
+  {
+	  ANO_DT_Data_Exchange(); //更新数据到上位机
+      osDelay(2);
+  }
+  /* USER CODE END Start_ANO_DT_Data_Task */
+}
+
+/* USER CODE BEGIN Header_StartT_Prepare_Data_Task */
+/**
+* @brief Function implementing the Prepare_Data_Task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartT_Prepare_Data_Task */
+void StartT_Prepare_Data_Task(void const * argument)
+{
+  /* USER CODE BEGIN StartT_Prepare_Data_Task */
+  /* Infinite loop */
+  for(;;)
+  {
+	  Prepare_Data(); //获取姿态解算所需数据
+      osDelay(10);
+  }
+  /* USER CODE END StartT_Prepare_Data_Task */
+}
+
+/* USER CODE BEGIN Header_Start_IMUupdate_Task */
+/**
+* @brief Function implementing the IMUupdate_Task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Start_IMUupdate_Task */
+void Start_IMUupdate_Task(void const * argument)
+{
+  /* USER CODE BEGIN Start_IMUupdate_Task */
+  /* Infinite loop */
+  for(;;)
+  {
+	  IMUupdate(&Gyr_rad,&Acc_filt,&Att_Angle); //四元数姿态解算
+	  osDelay(10);
+  }
+  /* USER CODE END Start_IMUupdate_Task */
+}
+
+/* USER CODE BEGIN Header_StartTask11 */
+/**
+* @brief Function implementing the Control_Task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartTask11 */
+void StartTask11(void const * argument)
+{
+  /* USER CODE BEGIN StartTask11 */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartTask11 */
 }
 
 /* Private application code --------------------------------------------------*/

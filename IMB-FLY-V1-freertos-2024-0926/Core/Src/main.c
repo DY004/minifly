@@ -37,6 +37,7 @@
 #include "WS2812B_led.h"
 #include "delay.h"
 #include "bme280.h"
+#include "battery_adc.h"
 
 /* USER CODE END Includes */
 
@@ -90,7 +91,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-	delay_init(72);
+    delay_init(72);
 
   /* USER CODE END Init */
 
@@ -108,21 +109,22 @@ int main(void)
   MX_TIM3_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  PWR_ON();//开机启动
-  
-  
-//  SI24R1_Init();//SI24硬件验证OK,代码验证OK
-  
-//	MPU6050_Init();//MPU6050初始化（绿）,代码验证OK
-//	MPU6050_CalOff();
+    PWR_ON();//开机启动
+
+
+    SI24R1_Init();//SI24硬件验证OK,代码验证OK
+
+    MPU6050_Init();//MPU6050初始化（绿）,代码验证OK
+	MPU6050_CalOff();
 	MPU6050_Offset();
-//	bme280Init();//bme280初始化（绿）,代码验证OK
-//  FBM320_Init(); //FBM320初始化(气压计蓝) 
+	MPU6050_CalOff_Acc();
+    bme280Init();//bme280初始化（绿）,代码验证OK
+//  FBM320_Init(); //FBM320初始化(气压计蓝)
 //  MOTOR_Init(); //电机输出初始化
-//  BATT_Init(); //电池电压检测初始化
-//	PID_ReadFlash(); //Flash中的数据读取,代码验证OK
-//	PidParameter_init(); //PID参数初始化
-	RGB_LED_Off();	//初始化关闭所有RGB灯
+    BATT_Init(); //电池电压检测初始化
+    PID_ReadFlash(); //Flash中的数据读取,代码验证OK
+    PidParameter_init(); //PID参数初始化
+    RGB_LED_Off();	//初始化关闭所有RGB灯
 
   /* USER CODE END 2 */
 
@@ -136,12 +138,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
+    while (1)
+    {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
+    }
   /* USER CODE END 3 */
 }
 
@@ -202,11 +204,11 @@ void SystemClock_Config(void)
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-  __disable_irq();
-  while (1)
-  {
-  }
+    /* User can add his own implementation to report the HAL error return state */
+    __disable_irq();
+    while (1)
+    {
+    }
   /* USER CODE END Error_Handler_Debug */
 }
 
@@ -221,8 +223,8 @@ void Error_Handler(void)
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+    /* User can add his own implementation to report the file name and line number,
+       ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */

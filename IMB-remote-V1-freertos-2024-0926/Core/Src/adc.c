@@ -22,6 +22,7 @@
 
 /* USER CODE BEGIN 0 */
 #include "sys.h"
+#include "paramsave.h"
 
 u8 ADC_CALIBRATOR_OK;  //遥控通道ADC校准标志
 
@@ -177,5 +178,51 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 }
 
 /* USER CODE BEGIN 1 */
+
+void ADC_Calibration(void)
+{
+    static u8 cnt=0;
+    static vs32 temp1=0,temp2=0,temp3=0,temp4=0;
+    if(ADC_ConvertedValue[2]>1900&&ADC_ConvertedValue[2]<2196&&ADC_ConvertedValue[3]>1900&&ADC_ConvertedValue[3]<2196)
+    {
+        if(0==cnt)
+        {
+            temp1 = 0;
+            temp2 = 0;
+            temp3 = 0;
+            temp4 = 0;
+            cnt = 0;
+        }
+        temp1 += (1000 + ADC_ConvertedValue[0]*1000/4096);
+        temp2 += (1000 + ADC_ConvertedValue[1]*500/4096);
+        temp3 += (1000 + ADC_ConvertedValue[2]*1000/4096);
+        temp4 += (1000 + ADC_ConvertedValue[3]*1000/4096);
+        cnt++;
+        if(cnt >= 60)
+        {
+            ADC_Calibrator[0] = temp1/cnt;
+            ADC_Calibrator[1] = temp2/cnt;
+            ADC_Calibrator[2] = temp3/cnt;
+            ADC_Calibrator[3] = temp4/cnt;
+            ADC_CALIBRATOR_OK = 0;
+            cnt = 0;
+            PID_WriteFlash();
+        }
+    }
+}
+
+
+
+
+uint16_t My_adcData [adc_max]= {0};
+adcValue_type adcValue ;
+uint16_t AD_value[4]= {0};
+
+
+
+
+
+/* USER CODE BEGIN 1 */
+
 
 /* USER CODE END 1 */

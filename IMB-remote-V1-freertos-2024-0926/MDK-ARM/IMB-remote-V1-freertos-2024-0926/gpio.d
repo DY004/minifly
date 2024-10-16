@@ -30,3 +30,6 @@ imb-remote-v1-freertos-2024-0926\gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm
 imb-remote-v1-freertos-2024-0926\gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 imb-remote-v1-freertos-2024-0926\gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 imb-remote-v1-freertos-2024-0926\gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+imb-remote-v1-freertos-2024-0926\gpio.o: ../SYSTEM/sys/sys.h
+imb-remote-v1-freertos-2024-0926\gpio.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
+imb-remote-v1-freertos-2024-0926\gpio.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h

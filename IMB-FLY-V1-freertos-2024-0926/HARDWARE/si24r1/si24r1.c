@@ -278,7 +278,7 @@ void SI24R1_Check(void)
 	while(!SI24R1_testConnection())
 	{
 		printf("\r SI24R1 no connect...\r\n");
-		RGB_LED_Red();//∫Ïµ∆≥£¡¡
+//		RGB_LED_Red();//∫Ïµ∆≥£¡¡
 	}
 }
 

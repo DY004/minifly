@@ -33,3 +33,4 @@ imb-remote-v1-freertos-2024-0926\adc.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm3
 imb-remote-v1-freertos-2024-0926\adc.o: ../SYSTEM/sys/sys.h
 imb-remote-v1-freertos-2024-0926\adc.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
 imb-remote-v1-freertos-2024-0926\adc.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+imb-remote-v1-freertos-2024-0926\adc.o: ../HARDWARE/paramsave/paramsave.h

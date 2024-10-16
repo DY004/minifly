@@ -28,9 +28,6 @@ nRF无线收发程序，以接收模式为主，当有数据要发送时，则�
 #include "delay.h"
 #include "oleddispaly.h"
 
-//用来保存哪个按键刚被按下
-vu8 ButtonMask;
-
 
 
 u8  TX_ADDRESS[TX_ADR_WIDTH]= {0x34,0x43,0x10,0x10,0xFF};	//此地址用来识别接收端哪个RX通道可以接收发送出去的数据包
@@ -97,12 +94,10 @@ void SI24R1_Config(void)
 	SPI_Write_Buf(WRITE_REG_CMD + RX_ADDR_P0, RX_ADDRESS, RX_ADR_WIDTH); 	
 	SPI_Write_Byte(WRITE_REG_CMD + SETUP_RETR, 0x1a); 						//自动重发延迟为500+86us，重发次数10次
 	SPI_Write_Byte(WRITE_REG_CMD + EN_AA, 0x01);      						//接收数据后，只允许频道0自动应答
-	SPI_Write_Byte(WRITE_REG_CMD + EN_RXADDR, 0x01);  						//只允许频道0接收数据
-	
+	SPI_Write_Byte(WRITE_REG_CMD + EN_RXADDR, 0x01);  						//只允许频道0接收数据	
 	SPI_Write_Byte(WRITE_REG_CMD + RF_SETUP, 0x27);   						//设置发射速率为2MHZ，发射功率为最大值0dB
 	SPI_Write_Byte(WRITE_REG_CMD + RF_CH, 30);        						//设置通道通信频率，工作通道频率可由以下公式计算得出：Fo=（2400+RF-CH）MHz.并且射频收发器工作的频率范围从2.400-2.525GHz
 	SPI_Write_Byte(WRITE_REG_CMD + RX_PW_P0, RX_PLOAD_WIDTH); 				//设置接收数据长度，本次设置为5字节，只有接收的数据达到此长度时，才会触发RX_DS中断
-	
 	SPI_Write_Byte(WRITE_REG_CMD + CONFIG, 0x0f);   						//默认处于接收模式
 
 //	读回配置信息，防止配置出错（调试代码的时候可以使用，程序正常运行代码时，注释掉这些打印代码）
@@ -121,6 +116,7 @@ void SI24R1_Config(void)
 //IRQ引脚对应的EXTI中断处理函数
 void EXTI1_IRQHandler(void)
 {
+	HAL_GPIO_EXTI_IRQHandler(NRF_IRQ_Pin);//这行代码还必须假如进来。
 	CE_LOW;											//拉低CE，以便读取SI24R1中STATUS中的数据
 	sta = SPI_Read_Byte(READ_REG_CMD+STATUS);		//读取STATUS中的数据，以便判断是由什么中断源触发的IRQ中断
 	
@@ -137,8 +133,8 @@ void EXTI1_IRQHandler(void)
 		{
 //			LED_Toggle(LED1);					 	//LED1闪烁表示飞机加锁模式中，但是和飞机通讯成功
 			//上述代码用hal库代替
-			HAL_GPIO_TogglePin(LED_green_GPIO_Port,LED_green_Pin);
-			
+//			HAL_GPIO_TogglePin(LED_green_GPIO_Port,LED_green_Pin);
+			HAL_GPIO_WritePin(LED_green_GPIO_Port,LED_green_Pin,GPIO_PIN_SET);//LED1关闭表示飞机加锁模式中，但是和飞机通讯成功
 		}
 		SPI_Write_Byte(WRITE_REG_CMD+STATUS,TX_DS);	//清除TX_DS中断
 		SPI_Write_Byte(FLUSH_TX,0xff);              //清空TX_FIFO
@@ -159,7 +155,12 @@ void EXTI1_IRQHandler(void)
 		}
 //		LED_Off(LED1);									  //LED1灭时，表示和飞机通讯中断
 		//上述代码用hal库代替
-		HAL_GPIO_WritePin(LED_green_GPIO_Port,LED_green_Pin,GPIO_PIN_SET);
+//		HAL_GPIO_WritePin(LED_green_GPIO_Port,LED_green_Pin,GPIO_PIN_SET);
+		for(int i = 1;i<3;i++)
+		{
+			HAL_GPIO_TogglePin(LED_green_GPIO_Port,LED_green_Pin);
+
+		}
 		
 		RX_Mode();										  //将SI24R1的模式改为接收模式，等待接收数据
 		SPI_Write_Byte(WRITE_REG_CMD+STATUS,MAX_RT);	  //清除MAX_RT中断
@@ -167,6 +168,8 @@ void EXTI1_IRQHandler(void)
 //		printf("MAX_RT OK!!!\r\n");
 	}
 //	EXTI_ClearITPendingBit(EXTI_Line1);
+	 __HAL_GPIO_EXTI_CLEAR_IT(EXTI_LINE_1);
+	
 }
 
 
@@ -228,9 +231,9 @@ void WaitFlY_Connection(void)
 			{
 				PID_WriteFlash();  
 				//保存上一次连接的飞机的SI24R1地址
-//				printf("Address save :%d preaddr:%d\r\n",TX_ADDRESS[4],preaddr);
+				printf("Address save :%d preaddr:%d\r\n",TX_ADDRESS[4],preaddr);
 			}
-//			printf("Fly connect OK!!!\r\n");
+			printf("Fly connect OK!!!\r\n");
 			return;
 		}else if(cnt++ < 10)
 		{

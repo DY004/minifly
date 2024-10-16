@@ -40,7 +40,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-uint16_t AdcBuf[4]={0};
+uint16_t AdcBuf[4]= {0};
 
 /* USER CODE END PTD */
 
@@ -106,17 +106,20 @@ int main(void)
   MX_USART1_UART_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
-  delay_init(72);
-  PWR_ON();//开机
-  OLED_Init();//OLED的初始化
-  SI24R1_Config();
-  HAL_ADCEx_Calibration_Start(&hadc1);
-  HAL_ADC_Start_DMA(&hadc1,(uint32_t *)AdcBuf,4);
-  WaitFlY_Connection();
-  Display_init();
-  
-  
-  
+    delay_init(72);
+    PWR_ON();//开机
+    OLED_Init();//OLED的初始化
+    SI24R1_Config();
+    MX_ADC1_Init();
+    MX_DMA_Init();
+
+    HAL_ADCEx_Calibration_Start(&hadc1);
+    HAL_ADC_Start_DMA(&hadc1,(uint32_t *)ADC_ConvertedValue,sizeof(ADC_ConvertedValue));
+    WaitFlY_Connection();
+    Display_init();
+
+
+
 //  printf("准备开始执行动作\r\n");//串口测试完毕，这个printf语句可以进行注释。
 
   /* USER CODE END 2 */
@@ -131,12 +134,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
+    while (1)
+    {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
+    }
   /* USER CODE END 3 */
 }
 
@@ -197,11 +200,11 @@ void SystemClock_Config(void)
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-  __disable_irq();
-  while (1)
-  {
-  }
+    /* User can add his own implementation to report the HAL error return state */
+    __disable_irq();
+    while (1)
+    {
+    }
   /* USER CODE END Error_Handler_Debug */
 }
 
@@ -216,8 +219,8 @@ void Error_Handler(void)
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+    /* User can add his own implementation to report the file name and line number,
+       ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */

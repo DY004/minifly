@@ -62,5 +62,14 @@ void SI24R1_SendPacket(u8* tfbuf);
 void SI24R1_ReceivePacket(u8* rx_buf);
 void WaitFlY_Connection(void);
 void ReconnectionFly(void);
+
+
+//发生中断时，根据STATUS寄存器中的值来判断是哪个中断源触发了IRQ中断
+#define TX_DS			  0x20			  //数据发送完成中断
+#define RX_DR			  0x40			  //数据接收完成中断
+#define MAX_RT			  0x10		      //数据包重发次数超过设定值中断
+#define AddrMax           50              //SI24R1最后一位地址最大值
+
+
 #endif
 

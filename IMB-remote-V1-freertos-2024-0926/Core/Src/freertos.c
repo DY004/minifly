@@ -29,6 +29,7 @@
 #include "oled.h"
 #include "oleddispaly.h"
 #include "si24r1.h"
+#include "adc.h"
 
 
 /* USER CODE END Includes */
@@ -78,10 +79,10 @@ static StackType_t xIdleStack[configMINIMAL_STACK_SIZE];
 
 void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize )
 {
-  *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
-  *ppxIdleTaskStackBuffer = &xIdleStack[0];
-  *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
-  /* place for user code */
+    *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+    *ppxIdleTaskStackBuffer = &xIdleStack[0];
+    *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+    /* place for user code */
 }
 /* USER CODE END GET_IDLE_TASK_MEMORY */
 
@@ -96,19 +97,19 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END Init */
 
   /* USER CODE BEGIN RTOS_MUTEX */
-  /* add mutexes, ... */
+    /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
+    /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
-  /* start timers, add new ones, ... */
+    /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
-  /* add queues, ... */
+    /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -129,7 +130,7 @@ void MX_FREERTOS_Init(void) {
   ReconnectionFly_TaskHandle = osThreadCreate(osThread(ReconnectionFly_Task), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
+    /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
 }
@@ -144,12 +145,12 @@ void MX_FREERTOS_Init(void) {
 void Start_PWR_Task(void const * argument)
 {
   /* USER CODE BEGIN Start_PWR_Task */
-  /* Infinite loop */
-  for(;;)
-  {
-	  PWR_ON_OFF();
-      osDelay(1);
-  }
+    /* Infinite loop */
+    for(;;)
+    {
+        PWR_ON_OFF();
+        osDelay(20);
+    }
   /* USER CODE END Start_PWR_Task */
 }
 
@@ -163,13 +164,17 @@ void Start_PWR_Task(void const * argument)
 void Start_LED_Task(void const * argument)
 {
   /* USER CODE BEGIN Start_LED_Task */
-  /* Infinite loop */
-  for(;;)
-  {
-	  HAL_GPIO_TogglePin(LED_red_GPIO_Port,LED_red_Pin);
+    /* Infinite loop */
+    for(;;)
+    {
+        HAL_GPIO_TogglePin(LED_red_GPIO_Port,LED_red_Pin);
 //	  HAL_GPIO_TogglePin(LED_green_GPIO_Port,LED_green_Pin);
-	  osDelay(500);
-  }
+//        printf("PA0的值：%d\r\n",AD_value[0]);//根据遥感电位器的图，这个是上下。，数值正确，遥感下边是最小值，上边是最大值
+//		printf("PA1的值：%d\r\n",AD_value[1]);//根据遥感电位器的图，这个是上下。，数值正确，遥感下边是最小值，上边是最大值
+//		printf("PA2的值：%d\r\n",AD_value[2]);//根据遥感电位器的图，这个是上下。，数值正确，遥感下边是最小值，上边是最大值
+//		printf("PA3的值：%d\r\n",AD_value[3]);//根据遥感电位器的图，这个是上下。，数值正确，遥感下边是最小值，上边是最大值
+        osDelay(500);
+    }
   /* USER CODE END Start_LED_Task */
 }
 
@@ -183,12 +188,12 @@ void Start_LED_Task(void const * argument)
 void StartT_OLEDdisplay_Task(void const * argument)
 {
   /* USER CODE BEGIN StartT_OLEDdisplay_Task */
-  /* Infinite loop */
-  for(;;)
-  {
-	  Display_Update();
-//	  osDelay(1);
-  }
+    /* Infinite loop */
+    for(;;)
+    {
+        Display_Update();
+//	    osDelay(1000);
+    }
   /* USER CODE END StartT_OLEDdisplay_Task */
 }
 
@@ -202,12 +207,12 @@ void StartT_OLEDdisplay_Task(void const * argument)
 void Start_ReconnectionFly_Task(void const * argument)
 {
   /* USER CODE BEGIN Start_ReconnectionFly_Task */
-  /* Infinite loop */
-  for(;;)
-  {
-	  ReconnectionFly();
-	  osDelay(1);
-  }
+    /* Infinite loop */
+    for(;;)
+    {
+        ReconnectionFly();
+//        osDelay(2);
+    }
   /* USER CODE END Start_ReconnectionFly_Task */
 }
 

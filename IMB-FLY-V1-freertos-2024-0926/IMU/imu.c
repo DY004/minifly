@@ -193,10 +193,14 @@ void IMUupdate(FLOAT_XYZ *Gyr_rad,FLOAT_XYZ *Acc_filt,FLOAT_ANGLE *Att_Angle)
 	matrix[8] = q0q0 - q1q1 - q2q2 + q3q3;	// 33
 
 	//四元数转换成欧拉角(Z->Y->X) 
-	Att_Angle->yaw += Gyr_rad->Z *RadtoDeg*0.01f;     
-//	Att_Angle->yaw = atan2(2.f * (q1q2 + q0q3), q0q0 + q1q1 - q2q2 - q3q3)* 57.3f; // yaw
-	Att_Angle->rol = -asin(2.f * (q1q3 - q0q2))* 57.3f;                            // roll(负号要注意) 
-	Att_Angle->pit = -atan2(2.f * q2q3 + 2.f * q0q1, q0q0 - q1q1 - q2q2 + q3q3)* 57.3f ; // pitch
+//	Att_Angle->yaw = Gyr_rad->Z *RadtoDeg*0.01f;     
+	Att_Angle->yaw = atan2(2.f * (q1q2 + q0q3), q0q0 + q1q1 - q2q2 - q3q3)* 57.3f; // yaw     Z轴
+//	Att_Angle->rol = -asin(2.f * (q1q3 - q0q2))* 57.3f;                            // roll(负号要注意)
+//	Att_Angle->pit = -atan2(2.f * q2q3 + 2.f * q0q1, q0q0 - q1q1 - q2q2 + q3q3)* 57.3f ; // pitch
+	//改变一下方向，自己的贴片和参考的不一样。
+//	Att_Angle->rol = atan2(2.f * q2q3 + 2.f * q0q1, -2.f*q1q1 - 2.f*q2q2 + 1)* 57.3f;     // roll   y轴
+//	Att_Angle->pit =  -asin(2.f * (q1q3 - q0q2))* 57.3f; // pitch  x轴
+	
 	for(i=0;i<9;i++)
 	{
 		*(&(DCMgb[0][0])+i) = matrix[i];

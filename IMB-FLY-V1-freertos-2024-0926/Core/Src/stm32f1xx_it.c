@@ -24,6 +24,13 @@
 #include "task.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+#include "si24r1.h"
+#include "remotedata.h"
+#include "string.h"
+#include "stdio.h"
+
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,7 +64,7 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-extern UART_HandleTypeDef huart1;
+
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -74,9 +81,9 @@ void NMI_Handler(void)
 
   /* USER CODE END NonMaskableInt_IRQn 0 */
   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
-   while (1)
-  {
-  }
+    while (1)
+    {
+    }
   /* USER CODE END NonMaskableInt_IRQn 1 */
 }
 
@@ -183,17 +190,56 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles USART1 global interrupt.
+  * @brief This function handles EXTI line2 interrupt.
   */
-void USART1_IRQHandler(void)
+void EXTI2_IRQHandler(void)
 {
-  /* USER CODE BEGIN USART1_IRQn 0 */
+  /* USER CODE BEGIN EXTI2_IRQn 0 */
 
-  /* USER CODE END USART1_IRQn 0 */
-  HAL_UART_IRQHandler(&huart1);
-  /* USER CODE BEGIN USART1_IRQn 1 */
+  /* USER CODE END EXTI2_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(RF_IRQ_Pin);
+  /* USER CODE BEGIN EXTI2_IRQn 1 */
 
-  /* USER CODE END USART1_IRQn 1 */
+    uint8_t sta;
+//	if(EXTI_GetITStatus(EXTI_Line2) != RESET )   //这个语句用hal库代替。
+
+//	{
+    SI24R1_CE_LOW;//拉低CE，以便读取NRF中STATUS中的数据
+    sta = SI24R1_read_reg(R_REGISTER+STATUS); //读取STATUS中的数据，以便判断是由什么中断源触发的IRQ中断
+
+    /* 发送完成中断 TX_OK */
+    if(sta & TX_OK)
+    {
+        SI24R1set_Mode(IT_RX);
+        SI24R1_write_reg(W_REGISTER+STATUS,TX_OK); //清除发送完成标志·
+        SI24R1_write_reg(FLUSH_TX,0xff); //清除TX_FIFO
+//		printf("Sent OK!!!!\r\n");
+    }
+    /* 接收完成中断 RX_OK */
+    if(sta & RX_OK)
+    {
+        SI24R1_RxPacket(SI24R1_RX_DATA);
+        Remote_Data_ReceiveAnalysis();
+        SI24R1_write_reg(W_REGISTER+STATUS,RX_OK); //清除发送完成标志·
+//		printf("Receive OK!!!!\r\n");
+    }
+    /* 达到最大重发次数中断  MAX_TX */
+    if(sta & MAX_TX)
+    {
+        SI24R1set_Mode(IT_RX);
+        SI24R1_write_reg(W_REGISTER+STATUS,MAX_TX);//清除接达到最大重发标志
+        SI24R1_write_reg(FLUSH_TX,0xff); //清除TX_FIFO
+//			printf("Sent Max Data!!!\r\n");
+    }
+//		EXTI_ClearITPendingBit(EXTI_LINE_2);
+    __HAL_GPIO_EXTI_CLEAR_IT(EXTI_LINE_2);
+//	}
+
+
+
+
+
+  /* USER CODE END EXTI2_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

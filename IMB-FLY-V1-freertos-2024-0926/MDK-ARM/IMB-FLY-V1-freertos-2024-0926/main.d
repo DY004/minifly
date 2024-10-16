@@ -66,3 +66,4 @@ imb-fly-v1-freertos-2024-0926\main.o: ../HARDWARE/WS2812B_led/WS2812B_led.h
 imb-fly-v1-freertos-2024-0926\main.o: ../SYSTEM/delay/delay.h
 imb-fly-v1-freertos-2024-0926\main.o: ../HARDWARE/BME280/bme280.h
 imb-fly-v1-freertos-2024-0926\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdbool.h
+imb-fly-v1-freertos-2024-0926\main.o: ../HARDWARE/battery_adc/battery_adc.h
