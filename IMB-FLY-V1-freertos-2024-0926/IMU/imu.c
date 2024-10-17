@@ -14,6 +14,7 @@
 #include "filter.h"
 #include "mpu6050.h"
 #include "control.h"
+extern float yaw_kalman; 
 
 #define Kp_New      0.9f              //互补滤波当前数据的权重
 #define Kp_Old      0.1f              //互补滤波历史数据的权重  
@@ -193,13 +194,16 @@ void IMUupdate(FLOAT_XYZ *Gyr_rad,FLOAT_XYZ *Acc_filt,FLOAT_ANGLE *Att_Angle)
 	matrix[8] = q0q0 - q1q1 - q2q2 + q3q3;	// 33
 
 	//四元数转换成欧拉角(Z->Y->X) 
-//	Att_Angle->yaw = Gyr_rad->Z *RadtoDeg*0.01f;     
-	Att_Angle->yaw = atan2(2.f * (q1q2 + q0q3), q0q0 + q1q1 - q2q2 - q3q3)* 57.3f; // yaw     Z轴
-//	Att_Angle->rol = -asin(2.f * (q1q3 - q0q2))* 57.3f;                            // roll(负号要注意)
-//	Att_Angle->pit = -atan2(2.f * q2q3 + 2.f * q0q1, q0q0 - q1q1 - q2q2 + q3q3)* 57.3f ; // pitch
+//	Att_Angle->yaw = yaw_kalman;//卡尔曼滤波先暂停
+//	Att_Angle->yaw = Gyr_rad->Z *RadtoDeg*0.01f; 
+	Att_Angle->yaw =  -atan2(2.f * (q1q2 + q0q3), q0q0 + q1q1 - q2q2 - q3q3)* 57.3f ;
+
+//	Att_Angle->yaw = ; // 偏航角Yaw    绕着Z轴 (机头水平转）  方向OK  但是漂移过大
+//	Att_Angle->rol = -asin(2.f * (q1q3 - q0q2))* 57.3f;                            // roll(负号要注意)   X轴  俯仰
+//	Att_Angle->pit = -atan2(2.f * q2q3 + 2.f * q0q1, q0q0 - q1q1 - q2q2 + q3q3)* 57.3f ; // pitch   y轴  俯仰
 	//改变一下方向，自己的贴片和参考的不一样。
-//	Att_Angle->rol = atan2(2.f * q2q3 + 2.f * q0q1, -2.f*q1q1 - 2.f*q2q2 + 1)* 57.3f;     // roll   y轴
-//	Att_Angle->pit =  -asin(2.f * (q1q3 - q0q2))* 57.3f; // pitch  x轴
+	Att_Angle->rol = atan2(2.f * q2q3 + 2.f * q0q1, -2.f*q1q1 - 2.f*q2q2 + 1)* 57.3f;     // roll   绕着Y轴   横滚   方向OK
+	Att_Angle->pit =  -asin(-2.f * q1q3 +2.f*q0q2)* 57.3f; // pitch  绕着X轴  俯仰    方向OK
 	
 	for(i=0;i<9;i++)
 	{

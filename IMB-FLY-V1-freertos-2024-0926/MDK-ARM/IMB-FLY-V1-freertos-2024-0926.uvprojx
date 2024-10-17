@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../HARDWARE/battery_adc;../HARDWARE/PWR_ON;../HARDWARE/PWR_ON_OFF;../SYSTEM/delay;../SYSTEM/sys;../HARDWARE/WS2812B_led;../HARDWARE;../HARDWARE/iic;../HARDWARE/si24r1;../CONTROL;../COMMUNICATE;../HARDWARE/flash;../IMU;../HARDWARE/mpu6050;../HARDWARE/motor;../HARDWARE/fbm320;../HARDWARE/BME280;../HARDWARE/myiic</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../HARDWARE/battery_adc;../HARDWARE/PWR_ON;../HARDWARE/PWR_ON_OFF;../SYSTEM/delay;../SYSTEM/sys;../HARDWARE/WS2812B_led;../HARDWARE;../HARDWARE/iic;../HARDWARE/si24r1;../CONTROL;../COMMUNICATE;../HARDWARE/flash;../IMU;../HARDWARE/mpu6050;../HARDWARE/motor;../HARDWARE/fbm320;../HARDWARE/BME280;../HARDWARE/myiic;../HARDWARE/kalman_cal</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1135,6 +1135,11 @@
               <FileName>filter.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\IMU\filter.c</FilePath>
+            </File>
+            <File>
+              <FileName>kalman_cal.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\kalman_cal\kalman_cal.c</FilePath>
             </File>
           </Files>
         </Group>

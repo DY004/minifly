@@ -110,19 +110,14 @@ int main(void)
     MX_USART1_UART_Init();
     /* USER CODE BEGIN 2 */
     PWR_ON();//开机启动
-
-
     SI24R1_Init();//SI24硬件验证OK,代码验证OK
-
-	MPU6050_Init();//MPU6050初始化（绿）,代码验证OK
-//	MPU6050_CalOff();
-//	MPU6050_Offset();
-	bme280Init();//bme280初始化（绿）,代码验证OK
+    MPU6050_Init();//MPU6050初始化（绿）,代码验证OK
+    bme280Init();//bme280初始化（绿）,代码验证OK
 //  FBM320_Init(); //FBM320初始化(气压计蓝)
-//  MOTOR_Init(); //电机输出初始化
-  BATT_Init(); //电池电压检测初始化
-	PID_ReadFlash(); //Flash中的数据读取,代码验证OK
-	PidParameter_init(); //PID参数初始化
+  MOTOR_Init(); //电机输出初始化
+    BATT_Init(); //电池电压检测初始化
+    PID_ReadFlash(); //Flash中的数据读取,代码验证OK
+    PidParameter_init(); //PID参数初始化
     RGB_LED_Off();	//初始化关闭所有RGB灯
 
     /* USER CODE END 2 */

@@ -59,6 +59,7 @@
 "imb-fly-v1-freertos-2024-0926\ano_dt.o"
 "imb-fly-v1-freertos-2024-0926\imu.o"
 "imb-fly-v1-freertos-2024-0926\filter.o"
+"imb-fly-v1-freertos-2024-0926\kalman_cal.o"
 --library_type=microlib --strict --scatter "IMB-FLY-V1-freertos-2024-0926\IMB-FLY-V1-freertos-2024-0926.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
