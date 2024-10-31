@@ -13,7 +13,7 @@
 #include "motor.h"
 
 
-#define Moto_PwmMax 1000
+#define Moto_PwmMax 1000//需要适配自己的动力。
 int16_t MOTO1_PWM = 0;
 int16_t MOTO2_PWM = 0;
 int16_t MOTO3_PWM = 0;

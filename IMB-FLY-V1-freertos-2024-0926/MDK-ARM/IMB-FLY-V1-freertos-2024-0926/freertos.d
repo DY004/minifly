@@ -65,3 +65,4 @@ imb-fly-v1-freertos-2024-0926\freertos.o: ../HARDWARE/kalman_cal/kalman_cal.h
 imb-fly-v1-freertos-2024-0926\freertos.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
 imb-fly-v1-freertos-2024-0926\freertos.o: ../HARDWARE/battery_adc/battery_adc.h
 imb-fly-v1-freertos-2024-0926\freertos.o: ../CONTROL/control.h
+imb-fly-v1-freertos-2024-0926\freertos.o: ../Core/Inc/usart.h

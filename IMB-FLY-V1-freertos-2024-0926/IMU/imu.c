@@ -119,6 +119,7 @@ float exInt = 0, eyInt = 0, ezInt = 0;    // scaled integral error
 
 void IMUupdate(FLOAT_XYZ *Gyr_rad,FLOAT_XYZ *Acc_filt,FLOAT_ANGLE *Att_Angle)
 {
+//	float yaw1,yaw2,yaw3,yaw4,yaw5;//临时测试的变量
 	uint8_t i;
 	float matrix[9] = {1.f,  0.0f,  0.0f, 0.0f,  1.f,  0.0f, 0.0f,  0.0f,  1.f };//初始化矩阵
 	float ax = Acc_filt->X,ay = Acc_filt->Y,az = Acc_filt->Z;
@@ -195,10 +196,18 @@ void IMUupdate(FLOAT_XYZ *Gyr_rad,FLOAT_XYZ *Acc_filt,FLOAT_ANGLE *Att_Angle)
 
 	//四元数转换成欧拉角(Z->Y->X) 
 //	Att_Angle->yaw = yaw_kalman;//卡尔曼滤波先暂停
-//	Att_Angle->yaw = Gyr_rad->Z *RadtoDeg*0.01f; 
-	Att_Angle->yaw =  -atan2(2.f * (q1q2 + q0q3), q0q0 + q1q1 - q2q2 - q3q3)* 57.3f ;
+	Att_Angle->yaw = Gyr_rad->Z *RadtoDeg*0.001f; 
+//	yaw1 =  -atan2(2.f * (q1q2 + q0q3), q0q0 + q1q1 - q2q2 - q3q3)* RadtoDeg;
+//	yaw2 =  -atan2(2.f * (q1q2 + q0q3), q0q0 + q1q1 - q2q2 - q3q3)* RadtoDeg;
+//	yaw3 =  -atan2(2.f * (q1q2 + q0q3), q0q0 + q1q1 - q2q2 - q3q3)* RadtoDeg;
+//	yaw4 =  atan2(2.f * (q1q2 + q0q3), q0q0 + q1q1 - q2q2 - q3q3)* RadtoDeg;
+//	yaw5 =  -atan2(2.f * (q1q2 + q0q3), q0q0 + q1q1 - q2q2 - q3q3)* RadtoDeg;
+//	Att_Angle->yaw =  (yaw1+yaw2+yaw3+yaw4+yaw5)/5;
+	
+	
+	//	Att_Angle->yaw =  -atan2(2.f * (q1q2 + q0q3), q0q0 + q1q1 - q2q2 - q3q3)* 57.3f ;   方向OK  但是漂移过大，并不适用
 
-//	Att_Angle->yaw = ; // 偏航角Yaw    绕着Z轴 (机头水平转）  方向OK  但是漂移过大
+//	Att_Angle->yaw = ; // 偏航角Yaw    绕着Z轴 (机头水平转）  
 //	Att_Angle->rol = -asin(2.f * (q1q3 - q0q2))* 57.3f;                            // roll(负号要注意)   X轴  俯仰
 //	Att_Angle->pit = -atan2(2.f * q2q3 + 2.f * q0q1, q0q0 - q1q1 - q2q2 + q3q3)* 57.3f ; // pitch   y轴  俯仰
 	//改变一下方向，自己的贴片和参考的不一样。

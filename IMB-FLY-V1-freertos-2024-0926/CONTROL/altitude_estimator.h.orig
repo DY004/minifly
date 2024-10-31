@@ -5,13 +5,13 @@
 typedef FLOAT_XYZ point_t;
 typedef FLOAT_XYZ velocity_t;
 typedef FLOAT_XYZ acc_t;
-
+	
 typedef struct
 {
-    FLOAT_ANGLE attitude;
-    point_t position;
-    velocity_t velocity;
-    acc_t acc;
+	FLOAT_ANGLE attitude;
+	point_t position;
+	velocity_t velocity;
+	acc_t acc;
 } state_t;
 
 

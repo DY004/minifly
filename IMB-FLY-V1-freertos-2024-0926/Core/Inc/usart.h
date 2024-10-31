@@ -47,6 +47,8 @@ void Usart_SendString(uint8_t *str);
 
 void u1_SendArray(uint8_t *Array, uint16_t Length);
 
+extern uint8_t aRxBuffer1[20];		// 用来接收串口1发送的数据
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

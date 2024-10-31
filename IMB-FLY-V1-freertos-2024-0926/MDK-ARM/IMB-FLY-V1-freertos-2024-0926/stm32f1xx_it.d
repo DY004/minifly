@@ -46,3 +46,4 @@ imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: ../Core/Inc/gpio.h
 imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: ../COMMUNICATE/remotedata.h
 imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
 imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
+imb-fly-v1-freertos-2024-0926\stm32f1xx_it.o: ../Core/Inc/usart.h

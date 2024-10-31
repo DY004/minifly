@@ -1,7 +1,7 @@
 /*******************************************************************************************
 										    声 明
     本项目代码仅供个人学习使用，可以自由移植修改，但必须保留此声明信息。移植过程中出现其他
-	
+
 不可估量的BUG，天际智联不负任何责任。请勿商用！
 
 * 程序版本：V1.01
@@ -35,46 +35,46 @@ PID_SAVE PIDflash;
 *******************************************************************************************/
 void ParamsToTable(void)
 {
-	//零偏数据
-	PIDflash.ACC_OFFSET_X = ACC_OFFSET_RAW.X;
-	PIDflash.ACC_OFFSET_Y = ACC_OFFSET_RAW.Y;
-	PIDflash.ACC_OFFSET_Z = ACC_OFFSET_RAW.Z; 
-	PIDflash.GYRO_OFFSET_X = GYRO_OFFSET_RAW.X;
-	PIDflash.GYRO_OFFSET_Y = GYRO_OFFSET_RAW.Y;
-	PIDflash.GYRO_OFFSET_Z = GYRO_OFFSET_RAW.Z;
-	
-	//角度环数据PID参数
-	PIDflash.ROL_Angle_P = (u16)(PID_ROL_Angle.P*1000);
-	PIDflash.ROL_Angle_I = (u16)(PID_ROL_Angle.I*1000);
-	PIDflash.ROL_Angle_D = (u16)(PID_ROL_Angle.D*1000);
-	PIDflash.PIT_Angle_P = (u16)(PID_PIT_Angle.P*1000);
-	PIDflash.PIT_Angle_I = (u16)(PID_PIT_Angle.I*1000);
-	PIDflash.PIT_Angle_D = (u16)(PID_PIT_Angle.D*1000);
-	PIDflash.YAW_Angle_P = (u16)(PID_YAW_Angle.P*1000);
-	PIDflash.YAW_Angle_I = (u16)(PID_YAW_Angle.I*1000);
-	PIDflash.YAW_Angle_D = (u16)(PID_YAW_Angle.D*1000);
-	
-	//角速度环PID参数
-	PIDflash.ROL_Rate_P  = (u16)(PID_ROL_Rate.P*1000);
-	PIDflash.ROL_Rate_I  = (u16)(PID_ROL_Rate.I*1000);
-	PIDflash.ROL_Rate_D  = (u16)(PID_ROL_Rate.D*1000);
-	PIDflash.PIT_Rate_P  = (u16)(PID_PIT_Rate.P*1000);
-	PIDflash.PIT_Rate_I  = (u16)(PID_PIT_Rate.I*1000);
-	PIDflash.PIT_Rate_D  = (u16)(PID_PIT_Rate.D*1000);
-	PIDflash.YAW_Rate_P  = (u16)(PID_YAW_Rate.P*1000);
-	PIDflash.YAW_Rate_I  = (u16)(PID_YAW_Rate.I*1000);
-	PIDflash.YAW_Rate_D  = (u16)(PID_YAW_Rate.D*1000);
-	
-	//高度环PID
-	PIDflash.ALT_Rate_P = (u16)(PID_ALT_Rate.P*1000);
-	PIDflash.ALT_Rate_I = (u16)(PID_ALT_Rate.I*1000);
-	PIDflash.ALT_Rate_D = (u16)(PID_ALT_Rate.D*1000);
-	PIDflash.ALT_P = (u16)(PID_ALT.P*1000);
-	PIDflash.ALT_I = (u16)(PID_ALT.I*1000);
-	PIDflash.ALT_D = (u16)(PID_ALT.D*1000);
-	
-	//随机获取的NRF地址最低字节
-	PIDflash.SI24R1addr = SI24R1addr;	
+    //零偏数据
+    PIDflash.ACC_OFFSET_X = ACC_OFFSET_RAW.X;
+    PIDflash.ACC_OFFSET_Y = ACC_OFFSET_RAW.Y;
+    PIDflash.ACC_OFFSET_Z = ACC_OFFSET_RAW.Z;
+    PIDflash.GYRO_OFFSET_X = GYRO_OFFSET_RAW.X;
+    PIDflash.GYRO_OFFSET_Y = GYRO_OFFSET_RAW.Y;
+    PIDflash.GYRO_OFFSET_Z = GYRO_OFFSET_RAW.Z;
+
+    //角度环数据PID参数
+    PIDflash.ROL_Angle_P = (u16)(PID_ROL_Angle.P*1000);
+    PIDflash.ROL_Angle_I = (u16)(PID_ROL_Angle.I*1000);
+    PIDflash.ROL_Angle_D = (u16)(PID_ROL_Angle.D*1000);
+    PIDflash.PIT_Angle_P = (u16)(PID_PIT_Angle.P*1000);
+    PIDflash.PIT_Angle_I = (u16)(PID_PIT_Angle.I*1000);
+    PIDflash.PIT_Angle_D = (u16)(PID_PIT_Angle.D*1000);
+    PIDflash.YAW_Angle_P = (u16)(PID_YAW_Angle.P*1000);
+    PIDflash.YAW_Angle_I = (u16)(PID_YAW_Angle.I*1000);
+    PIDflash.YAW_Angle_D = (u16)(PID_YAW_Angle.D*1000);
+
+    //角速度环PID参数
+    PIDflash.ROL_Rate_P  = (u16)(PID_ROL_Rate.P*1000);
+    PIDflash.ROL_Rate_I  = (u16)(PID_ROL_Rate.I*1000);
+    PIDflash.ROL_Rate_D  = (u16)(PID_ROL_Rate.D*1000);
+    PIDflash.PIT_Rate_P  = (u16)(PID_PIT_Rate.P*1000);
+    PIDflash.PIT_Rate_I  = (u16)(PID_PIT_Rate.I*1000);
+    PIDflash.PIT_Rate_D  = (u16)(PID_PIT_Rate.D*1000);
+    PIDflash.YAW_Rate_P  = (u16)(PID_YAW_Rate.P*1000);
+    PIDflash.YAW_Rate_I  = (u16)(PID_YAW_Rate.I*1000);
+    PIDflash.YAW_Rate_D  = (u16)(PID_YAW_Rate.D*1000);
+
+    //高度环PID
+    PIDflash.ALT_Rate_P = (u16)(PID_ALT_Rate.P*1000);
+    PIDflash.ALT_Rate_I = (u16)(PID_ALT_Rate.I*1000);
+    PIDflash.ALT_Rate_D = (u16)(PID_ALT_Rate.D*1000);
+    PIDflash.ALT_P = (u16)(PID_ALT.P*1000);
+    PIDflash.ALT_I = (u16)(PID_ALT.I*1000);
+    PIDflash.ALT_D = (u16)(PID_ALT.D*1000);
+
+    //随机获取的NRF地址最低字节
+    PIDflash.SI24R1addr = SI24R1addr;
 }
 
 /******************************************************************************************
@@ -86,46 +86,46 @@ void ParamsToTable(void)
 *******************************************************************************************/
 void TableToParams(void)
 {
-	//零偏数据
-	ACC_OFFSET_RAW.X = PIDflash.ACC_OFFSET_X;
-	ACC_OFFSET_RAW.Y = PIDflash.ACC_OFFSET_Y;
-	ACC_OFFSET_RAW.Z = PIDflash.ACC_OFFSET_Z;
-	GYRO_OFFSET_RAW.X = PIDflash.GYRO_OFFSET_X;
-	GYRO_OFFSET_RAW.Y = PIDflash.GYRO_OFFSET_Y;
-	GYRO_OFFSET_RAW.Z = PIDflash.GYRO_OFFSET_Z;
-	
-	//角度环数据PID参数
-	PID_ROL_Angle.P = PIDflash.ROL_Angle_P/1000.0f;
-	PID_ROL_Angle.I = PIDflash.ROL_Angle_I/1000.0f;
-	PID_ROL_Angle.D = PIDflash.ROL_Angle_D/1000.0f;
-	PID_PIT_Angle.P = PIDflash.PIT_Angle_P/1000.0f;
-	PID_PIT_Angle.I = PIDflash.PIT_Angle_I/1000.0f;
-	PID_PIT_Angle.D = PIDflash.PIT_Angle_D/1000.0f;
-	PID_YAW_Angle.P = PIDflash.YAW_Angle_P/1000.0f;
-	PID_YAW_Angle.I = PIDflash.YAW_Angle_I/1000.0f;
-	PID_YAW_Angle.D = PIDflash.YAW_Angle_D/1000.0f;
-		
-	//角速度环PID参数	
-	PID_ROL_Rate.P = PIDflash.ROL_Rate_P/1000.0f;
-	PID_ROL_Rate.I = PIDflash.ROL_Rate_I/1000.0f;
-	PID_ROL_Rate.D = PIDflash.ROL_Rate_D/1000.0f;
-	PID_PIT_Rate.P = PIDflash.PIT_Rate_P/1000.0f;
-	PID_PIT_Rate.I = PIDflash.PIT_Rate_I/1000.0f;
-	PID_PIT_Rate.D = PIDflash.PIT_Rate_D/1000.0f;
-	PID_YAW_Rate.P = PIDflash.YAW_Rate_P/1000.0f;
-	PID_YAW_Rate.I = PIDflash.YAW_Rate_I/1000.0f;
-	PID_YAW_Rate.D = PIDflash.YAW_Rate_D/1000.0f;
-	
-	//高度环PID
-	PID_ALT_Rate.P = PIDflash.ALT_Rate_P/1000.0f;
-	PID_ALT_Rate.I = PIDflash.ALT_Rate_I/1000.0f;
-	PID_ALT_Rate.D = PIDflash.ALT_Rate_D/1000.0f;
-	PID_ALT.P = PIDflash.ALT_P/1000.0f;
-	PID_ALT.I = PIDflash.ALT_I/1000.0f;
-	PID_ALT.D = PIDflash.ALT_D/1000.0f;
-	
-	//随机获取的NRF地址最低字节
-	SI24R1addr = PIDflash.SI24R1addr;
+    //零偏数据
+    ACC_OFFSET_RAW.X = PIDflash.ACC_OFFSET_X;
+    ACC_OFFSET_RAW.Y = PIDflash.ACC_OFFSET_Y;
+    ACC_OFFSET_RAW.Z = PIDflash.ACC_OFFSET_Z;
+    GYRO_OFFSET_RAW.X = PIDflash.GYRO_OFFSET_X;
+    GYRO_OFFSET_RAW.Y = PIDflash.GYRO_OFFSET_Y;
+    GYRO_OFFSET_RAW.Z = PIDflash.GYRO_OFFSET_Z;
+
+    //角度环数据PID参数
+    PID_ROL_Angle.P = PIDflash.ROL_Angle_P/1000.0f;
+    PID_ROL_Angle.I = PIDflash.ROL_Angle_I/1000.0f;
+    PID_ROL_Angle.D = PIDflash.ROL_Angle_D/1000.0f;
+    PID_PIT_Angle.P = PIDflash.PIT_Angle_P/1000.0f;
+    PID_PIT_Angle.I = PIDflash.PIT_Angle_I/1000.0f;
+    PID_PIT_Angle.D = PIDflash.PIT_Angle_D/1000.0f;
+    PID_YAW_Angle.P = PIDflash.YAW_Angle_P/1000.0f;
+    PID_YAW_Angle.I = PIDflash.YAW_Angle_I/1000.0f;
+    PID_YAW_Angle.D = PIDflash.YAW_Angle_D/1000.0f;
+
+    //角速度环PID参数
+    PID_ROL_Rate.P = PIDflash.ROL_Rate_P/1000.0f;
+    PID_ROL_Rate.I = PIDflash.ROL_Rate_I/1000.0f;
+    PID_ROL_Rate.D = PIDflash.ROL_Rate_D/1000.0f;
+    PID_PIT_Rate.P = PIDflash.PIT_Rate_P/1000.0f;
+    PID_PIT_Rate.I = PIDflash.PIT_Rate_I/1000.0f;
+    PID_PIT_Rate.D = PIDflash.PIT_Rate_D/1000.0f;
+    PID_YAW_Rate.P = PIDflash.YAW_Rate_P/1000.0f;
+    PID_YAW_Rate.I = PIDflash.YAW_Rate_I/1000.0f;
+    PID_YAW_Rate.D = PIDflash.YAW_Rate_D/1000.0f;
+
+    //高度环PID
+    PID_ALT_Rate.P = PIDflash.ALT_Rate_P/1000.0f;
+    PID_ALT_Rate.I = PIDflash.ALT_Rate_I/1000.0f;
+    PID_ALT_Rate.D = PIDflash.ALT_Rate_D/1000.0f;
+    PID_ALT.P = PIDflash.ALT_P/1000.0f;
+    PID_ALT.I = PIDflash.ALT_I/1000.0f;
+    PID_ALT.D = PIDflash.ALT_D/1000.0f;
+
+    //随机获取的NRF地址最低字节
+    SI24R1addr = PIDflash.SI24R1addr;
 }
 
 /******************************************************************************************
@@ -136,62 +136,62 @@ void TableToParams(void)
 * 备  注：如果由于误操作将Flash中的数据都擦除了可调用此函数重新初始化或者写入Flash
 *******************************************************************************************/
 void DefaultParams(void)
-{          
-	//零偏数据
-	PIDflash.ACC_OFFSET_X  = 0;
-	PIDflash.ACC_OFFSET_Y  = 0;
-	PIDflash.ACC_OFFSET_Z  = 0;
-	PIDflash.GYRO_OFFSET_X = 0;
-	PIDflash.GYRO_OFFSET_Y = 0;
-	PIDflash.GYRO_OFFSET_Z = 0;
-	
-	//角度环数据PID参数
+{
+    //零偏数据
+    PIDflash.ACC_OFFSET_X  = 0;
+    PIDflash.ACC_OFFSET_Y  = 0;
+    PIDflash.ACC_OFFSET_Z  = 0;
+    PIDflash.GYRO_OFFSET_X = 0;
+    PIDflash.GYRO_OFFSET_Y = 0;
+    PIDflash.GYRO_OFFSET_Z = 0;
+
+    //角度环数据PID参数
 //	PIDflash.ROL_Angle_P = 1800;
 //	PIDflash.ROL_Angle_I = 8;
 //	PIDflash.ROL_Angle_D = 50;
 //	PIDflash.PIT_Angle_P = 1800;
 //	PIDflash.PIT_Angle_I = 8;
-//	PIDflash.PIT_Angle_D = 50;	
+//	PIDflash.PIT_Angle_D = 50;
 //	PIDflash.YAW_Angle_P = 3500;
 //	PIDflash.YAW_Angle_I = 0;
 //	PIDflash.YAW_Angle_D = 1000;
-	PIDflash.ROL_Angle_P = 0;
-	PIDflash.ROL_Angle_I = 0;
-	PIDflash.ROL_Angle_D = 0;
-	PIDflash.PIT_Angle_P = 0;
-	PIDflash.PIT_Angle_I = 0;
-	PIDflash.PIT_Angle_D = 0;	
-	PIDflash.YAW_Angle_P = 0;
-	PIDflash.YAW_Angle_I = 0;
-	PIDflash.YAW_Angle_D = 0;
-	
-	//角速度环PID参数
+    PIDflash.ROL_Angle_P = 0;
+    PIDflash.ROL_Angle_I = 0;
+    PIDflash.ROL_Angle_D = 0;
+    PIDflash.PIT_Angle_P = 0;
+    PIDflash.PIT_Angle_I = 0;
+    PIDflash.PIT_Angle_D = 0;
+    PIDflash.YAW_Angle_P = 0;
+    PIDflash.YAW_Angle_I = 0;
+    PIDflash.YAW_Angle_D = 0;
+
+    //角速度环PID参数
 //	PIDflash.ROL_Rate_P  = 930;
 //	PIDflash.ROL_Rate_I  = 5;
 //	PIDflash.ROL_Rate_D  = 860;
 //	PIDflash.PIT_Rate_P  = 930;
 //	PIDflash.PIT_Rate_I  = 5;
-//	PIDflash.PIT_Rate_D  = 860;	
+//	PIDflash.PIT_Rate_D  = 860;
 //	PIDflash.YAW_Rate_P  = 2000;
 //	PIDflash.YAW_Rate_I  = 50;
 //	PIDflash.YAW_Rate_D  = 1000;
-	PIDflash.ROL_Rate_P  = 0;
-	PIDflash.ROL_Rate_I  = 0;
-	PIDflash.ROL_Rate_D  = 0;
-	PIDflash.PIT_Rate_P  = 1900;
-	PIDflash.PIT_Rate_I  = 6;
-	PIDflash.PIT_Rate_D  = 0;	
-	PIDflash.YAW_Rate_P  = 0;
-	PIDflash.YAW_Rate_I  = 0;
-	PIDflash.YAW_Rate_D  = 0;
-	
-	//高度环PID
-	PIDflash.ALT_Rate_P = 0;
-	PIDflash.ALT_Rate_I = 0;
-	PIDflash.ALT_Rate_D = 0;
-	PIDflash.ALT_P = 0;
-	PIDflash.ALT_I = 0;
-	PIDflash.ALT_D = 0;            	
+    PIDflash.ROL_Rate_P  = 0;
+    PIDflash.ROL_Rate_I  = 0;
+    PIDflash.ROL_Rate_D  = 0;
+    PIDflash.PIT_Rate_P  = 1900;
+    PIDflash.PIT_Rate_I  = 6;
+    PIDflash.PIT_Rate_D  = 0;
+    PIDflash.YAW_Rate_P  = 0;
+    PIDflash.YAW_Rate_I  = 0;
+    PIDflash.YAW_Rate_D  = 0;
+
+    //高度环PID
+    PIDflash.ALT_Rate_P = 0;
+    PIDflash.ALT_Rate_I = 0;
+    PIDflash.ALT_Rate_D = 0;
+    PIDflash.ALT_P = 0;
+    PIDflash.ALT_I = 0;
+    PIDflash.ALT_D = 0;
 }
 
 /************************************************************************
@@ -203,46 +203,46 @@ void DefaultParams(void)
 *************************************************************************/
 void ParamsClearAll(void)
 {
-	//零偏数据
-	PIDflash.ACC_OFFSET_X = 0;
-	PIDflash.ACC_OFFSET_Y = 0;
-	PIDflash.ACC_OFFSET_Z = 0;
-	PIDflash.GYRO_OFFSET_X = 0;
-	PIDflash.GYRO_OFFSET_Y = 0;
-	PIDflash.GYRO_OFFSET_Z = 0;
-	
-	//角度环数据PID参数
-	PIDflash.ROL_Angle_P = 0;
-	PIDflash.ROL_Angle_I = 0;
-	PIDflash.ROL_Angle_D = 0;
-	PIDflash.PIT_Angle_P = 0;
-	PIDflash.PIT_Angle_I = 0;
-	PIDflash.PIT_Angle_D = 0;
-	PIDflash.YAW_Angle_P = 0;
-	PIDflash.YAW_Angle_I = 0;
-	PIDflash.YAW_Angle_D = 0;
+    //零偏数据
+    PIDflash.ACC_OFFSET_X = 0;
+    PIDflash.ACC_OFFSET_Y = 0;
+    PIDflash.ACC_OFFSET_Z = 0;
+    PIDflash.GYRO_OFFSET_X = 0;
+    PIDflash.GYRO_OFFSET_Y = 0;
+    PIDflash.GYRO_OFFSET_Z = 0;
 
-	//角速度环PID参数	
-	PIDflash.ROL_Rate_P = 0;
-	PIDflash.ROL_Rate_I = 0; 
-	PIDflash.ROL_Rate_D = 0;
-	PIDflash.PIT_Rate_P = 0; 
-	PIDflash.PIT_Rate_I = 0;
-	PIDflash.PIT_Rate_D = 0; 
-	PIDflash.YAW_Rate_P = 0;
-	PIDflash.YAW_Rate_I = 0; 
-	PIDflash.YAW_Rate_D = 0; 
+    //角度环数据PID参数
+    PIDflash.ROL_Angle_P = 0;
+    PIDflash.ROL_Angle_I = 0;
+    PIDflash.ROL_Angle_D = 0;
+    PIDflash.PIT_Angle_P = 0;
+    PIDflash.PIT_Angle_I = 0;
+    PIDflash.PIT_Angle_D = 0;
+    PIDflash.YAW_Angle_P = 0;
+    PIDflash.YAW_Angle_I = 0;
+    PIDflash.YAW_Angle_D = 0;
 
-  //高度环PID
-	PIDflash.ALT_Rate_P = 0;
-	PIDflash.ALT_Rate_I = 0;
-	PIDflash.ALT_Rate_D = 0;
-	PIDflash.ALT_P = 0;
-	PIDflash.ALT_I = 0;
-	PIDflash.ALT_D = 0;
-	
-	//随机获取的NRF地址最低字节
-	PIDflash.SI24R1addr = 0;
+    //角速度环PID参数
+    PIDflash.ROL_Rate_P = 0;
+    PIDflash.ROL_Rate_I = 0;
+    PIDflash.ROL_Rate_D = 0;
+    PIDflash.PIT_Rate_P = 0;
+    PIDflash.PIT_Rate_I = 0;
+    PIDflash.PIT_Rate_D = 0;
+    PIDflash.YAW_Rate_P = 0;
+    PIDflash.YAW_Rate_I = 0;
+    PIDflash.YAW_Rate_D = 0;
+
+    //高度环PID
+    PIDflash.ALT_Rate_P = 0;
+    PIDflash.ALT_Rate_I = 0;
+    PIDflash.ALT_Rate_D = 0;
+    PIDflash.ALT_P = 0;
+    PIDflash.ALT_I = 0;
+    PIDflash.ALT_D = 0;
+
+    //随机获取的NRF地址最低字节
+    PIDflash.SI24R1addr = 0;
 }
 
 /******************************************************************************************
@@ -254,11 +254,11 @@ void ParamsClearAll(void)
 *******************************************************************************************/
 void PID_ClearFlash(void)
 {
-	u8 size,len;
-	ParamsClearAll();//数据清除
-	len =  sizeof(PIDflash);
-	size = len/(4+(len%4)?1:0); //保存的数据长度
-	STMFLASH_Write(FLASH_SAVE_ADDR,(uint16_t*)(&PIDflash),size);
+    u8 size,len;
+    ParamsClearAll();//数据清除
+    len =  sizeof(PIDflash);
+    size = len/(4+(len%4)?1:0); //保存的数据长度
+    STMFLASH_Write(FLASH_SAVE_ADDR,(uint16_t*)(&PIDflash),size);
 }
 
 /******************************************************************************************
@@ -270,11 +270,11 @@ void PID_ClearFlash(void)
 *******************************************************************************************/
 void PID_WriteFlash(void)
 {
-	u8 size,len;
-	ParamsToTable();//浮点数转换成整数
-	len =  sizeof(PIDflash);
-	size = len/(4+(len%4)?1:0); //保存的数据长度
-	STMFLASH_Write(FLASH_SAVE_ADDR,(uint16_t*)(&PIDflash),size);
+    u8 size,len;
+    ParamsToTable();//浮点数转换成整数
+    len =  sizeof(PIDflash);
+    size = len/(4+(len%4)?1:0); //保存的数据长度
+    STMFLASH_Write(FLASH_SAVE_ADDR,(uint16_t*)(&PIDflash),size);
 }
 
 /******************************************************************************************
@@ -286,54 +286,54 @@ void PID_WriteFlash(void)
 *******************************************************************************************/
 void PID_ReadFlash(void)
 {
-	u8 size,len;
-	len =  sizeof(PIDflash);
-	size = len/(4+(len%4)?1:0);//保存的数据长度
-	STMFLASH_Read(FLASH_SAVE_ADDR,(uint16_t*)(&PIDflash),size);
-	TableToParams();//将整数转换成浮点数
-	//读取参数失败
-	if(PIDflash.PIT_Angle_P ==0xFFFF && PIDflash.ROL_Angle_P==0xFFFF && PIDflash.YAW_Angle_P==0xFFFF)
-	{
-		
-		DefaultParams_WriteFlash();
-		printf("Flash Read Error!!!\r\n");
-	}
-	else
-	{
-		printf("Flash Read OK!!!\r\n");
-		DefaultParams_WriteFlash();
-	}
-	/*
-	printf("\r***************PID Angle loop parameter****************\r\n");
-	printf("\rPID_ROL_Angle.P = %0.2f\r\n",PID_ROL_Angle.P);
-	printf("\rPID_ROL_Angle.I = %0.2f\r\n",PID_ROL_Angle.I);
-	printf("\rPID_ROL_Angle.D = %0.2f\r\n",PID_ROL_Angle.D);
-	printf("\rPID_PIT_Angle.P = %0.2f\r\n",PID_PIT_Angle.P);
-	printf("\rPID_PIT_Angle.I = %0.2f\r\n",PID_PIT_Angle.I);
-	printf("\rPID_PIT_Angle.D = %0.2f\r\n",PID_PIT_Angle.D);
-	printf("\rPID_YAW_Angle.P = %0.2f\r\n",PID_YAW_Angle.P);
-	printf("\rPID_YAW_Angle.I = %0.2f\r\n",PID_YAW_Angle.I);
-	printf("\rPID_YAW_Angle.D = %0.2f\r\n",PID_YAW_Angle.D);
-	printf("\r***************PID AngleRate loop parameter**************\r\n");
-	printf("\rPID_ROL_Rate.P = %0.2f\r\n",PID_ROL_Rate.P );
-	printf("\rPID_ROL_Rate.I = %0.2f\r\n",PID_ROL_Rate.I );
-	printf("\rPID_ROL_Rate.D = %0.2f\r\n",PID_ROL_Rate.D );
-	printf("\rPID_PIT_Rate.P = %0.2f\r\n",PID_PIT_Rate.P );
-	printf("\rPID_PIT_Rate.I = %0.2f\r\n",PID_PIT_Rate.I );
-	printf("\rPID_PIT_Rate.D = %0.2f\r\n",PID_PIT_Rate.D );
-	printf("\rPID_YAW_Rate.P = %0.2f\r\n",PID_YAW_Rate.P );
-	printf("\rPID_YAW_Rate.I = %0.2f\r\n",PID_YAW_Rate.I );
-	printf("\rPID_YAW_Rate.D = %0.2f\r\n",PID_YAW_Rate.D );
-	printf("\r*****************PID ALTRate loop parameter**************\r\n");
-	printf("\rPID_ALT_Rate.P = %0.2f\r\n",PID_ALT_Rate.P );
-	printf("\rPID_ALT_Rate.I = %0.2f\r\n",PID_ALT_Rate.I );
-	printf("\rPID_ALT_Rate.D = %0.2f\r\n",PID_ALT_Rate.D );
-	printf("\r********************PID ALT loop parameter****************\r\n");
-	printf("\rPID_ALT.P = %0.2f\r\n",PID_ALT.P );
-	printf("\rPID_ALT.I = %0.2f\r\n",PID_ALT.I );
-	printf("\rPID_ALT.D = %0.2f\r\n",PID_ALT.D );
-	printf("\rSI24R1addr = 0x%x\r\n",SI24R1addr);
-	*/
+    u8 size,len;
+    len =  sizeof(PIDflash);
+    size = len/(4+(len%4)?1:0);//保存的数据长度
+    STMFLASH_Read(FLASH_SAVE_ADDR,(uint16_t*)(&PIDflash),size);
+    TableToParams();//将整数转换成浮点数
+    //读取参数失败
+    if(PIDflash.PIT_Angle_P ==0xFFFF && PIDflash.ROL_Angle_P==0xFFFF && PIDflash.YAW_Angle_P==0xFFFF)
+    {
+
+        DefaultParams_WriteFlash();
+        printf("Flash Read Error!!!\r\n");
+    }
+    else
+    {
+        printf("Flash Read OK!!!\r\n");
+        DefaultParams_WriteFlash();
+    }
+    /*
+    printf("\r***************PID Angle loop parameter****************\r\n");
+    printf("\rPID_ROL_Angle.P = %0.2f\r\n",PID_ROL_Angle.P);
+    printf("\rPID_ROL_Angle.I = %0.2f\r\n",PID_ROL_Angle.I);
+    printf("\rPID_ROL_Angle.D = %0.2f\r\n",PID_ROL_Angle.D);
+    printf("\rPID_PIT_Angle.P = %0.2f\r\n",PID_PIT_Angle.P);
+    printf("\rPID_PIT_Angle.I = %0.2f\r\n",PID_PIT_Angle.I);
+    printf("\rPID_PIT_Angle.D = %0.2f\r\n",PID_PIT_Angle.D);
+    printf("\rPID_YAW_Angle.P = %0.2f\r\n",PID_YAW_Angle.P);
+    printf("\rPID_YAW_Angle.I = %0.2f\r\n",PID_YAW_Angle.I);
+    printf("\rPID_YAW_Angle.D = %0.2f\r\n",PID_YAW_Angle.D);
+    printf("\r***************PID AngleRate loop parameter**************\r\n");
+    printf("\rPID_ROL_Rate.P = %0.2f\r\n",PID_ROL_Rate.P );
+    printf("\rPID_ROL_Rate.I = %0.2f\r\n",PID_ROL_Rate.I );
+    printf("\rPID_ROL_Rate.D = %0.2f\r\n",PID_ROL_Rate.D );
+    printf("\rPID_PIT_Rate.P = %0.2f\r\n",PID_PIT_Rate.P );
+    printf("\rPID_PIT_Rate.I = %0.2f\r\n",PID_PIT_Rate.I );
+    printf("\rPID_PIT_Rate.D = %0.2f\r\n",PID_PIT_Rate.D );
+    printf("\rPID_YAW_Rate.P = %0.2f\r\n",PID_YAW_Rate.P );
+    printf("\rPID_YAW_Rate.I = %0.2f\r\n",PID_YAW_Rate.I );
+    printf("\rPID_YAW_Rate.D = %0.2f\r\n",PID_YAW_Rate.D );
+    printf("\r*****************PID ALTRate loop parameter**************\r\n");
+    printf("\rPID_ALT_Rate.P = %0.2f\r\n",PID_ALT_Rate.P );
+    printf("\rPID_ALT_Rate.I = %0.2f\r\n",PID_ALT_Rate.I );
+    printf("\rPID_ALT_Rate.D = %0.2f\r\n",PID_ALT_Rate.D );
+    printf("\r********************PID ALT loop parameter****************\r\n");
+    printf("\rPID_ALT.P = %0.2f\r\n",PID_ALT.P );
+    printf("\rPID_ALT.I = %0.2f\r\n",PID_ALT.I );
+    printf("\rPID_ALT.D = %0.2f\r\n",PID_ALT.D );
+    printf("\rSI24R1addr = 0x%x\r\n",SI24R1addr);
+    */
 }
 
 /******************************************************************************************
@@ -345,11 +345,11 @@ void PID_ReadFlash(void)
 *******************************************************************************************/
 void DefaultParams_WriteFlash(void)
 {
-	u8 size,len;
-	DefaultParams();//初始化默认参数
-	len =  sizeof(PIDflash);
-	size = len/(4+(len%4)?1:0); //保存的数据长度
-	STMFLASH_Write(FLASH_SAVE_ADDR,(uint16_t*)(&PIDflash),size);
+    u8 size,len;
+    DefaultParams();//初始化默认参数
+    len =  sizeof(PIDflash);
+    size = len/(4+(len%4)?1:0); //保存的数据长度
+    STMFLASH_Write(FLASH_SAVE_ADDR,(uint16_t*)(&PIDflash),size);
 }
 
 
