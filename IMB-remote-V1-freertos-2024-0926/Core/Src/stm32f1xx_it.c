@@ -239,7 +239,7 @@ void EXTI4_IRQHandler(void)
         }
     }
 //		EXTI_ClearITPendingBit(EXTI_Line15);
-    __HAL_GPIO_EXTI_CLEAR_IT(EXTI_LINE_4);
+    __HAL_GPIO_EXTI_CLEAR_IT(EXTI_LINE_4);//这一步是必须往里面加入的。
 //	}
 
   /* USER CODE END EXTI4_IRQn 1 */

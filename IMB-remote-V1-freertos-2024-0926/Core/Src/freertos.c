@@ -191,7 +191,7 @@ void StartT_OLEDdisplay_Task(void const * argument)
     /* Infinite loop */
     for(;;)
     {
-        Display_Update();
+        Display_Update();//OLED更新显示
 //	    osDelay(1000);
     }
   /* USER CODE END StartT_OLEDdisplay_Task */
@@ -210,7 +210,7 @@ void Start_ReconnectionFly_Task(void const * argument)
     /* Infinite loop */
     for(;;)
     {
-        ReconnectionFly();
+        ReconnectionFly();//断线重连
 //        osDelay(2);
     }
   /* USER CODE END Start_ReconnectionFly_Task */
